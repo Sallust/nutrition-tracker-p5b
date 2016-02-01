@@ -1,0 +1,313 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+.my-nav {
+	background-image: linear-gradient(to bottom, #78909c 0%, #546e7a 100%);
+	border-color: #455a64;
+		box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.4);
+}
+
+.row {
+	height: 100%;
+}
+
+#map {
+	height: 100%;
+}
+
+.container-fluid {
+	height: 900px;
+	height: 100vh;
+	padding: 0;
+}
+
+.btn-div {
+	display: flex;
+}
+
+.my-btn {
+	flex-grow:0;
+	text-align: center;
+	margin: auto;
+}
+
+
+.filter-checkbox {
+	margin: 10px 0 10px 20px;
+	font-weight: bold;
+}
+
+/* Left Sidebar Styles */
+.ui-autocomplete { /* Solution from stackoverflow */
+	position:absolute;
+	cursor:default;
+	z-index:1001 !important
+}
+
+#sidebar-wrapper { /* I'm piggy-backing an ID needed for toggle feature*/
+	background: #cfd8dc;
+	direction: rtl;
+	box-shadow: 4px 0 6px -3px rgba(0, 0, 0, 0.4);
+}
+
+.my-input {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.img-div {
+	margin: 0 15px;
+	border-radius: 15px;
+	width: 100%;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+		0 1px 8px 0 rgba(0, 0, 0, 0.12),
+		0 3px 3px -2px rgba(0, 0, 0, 0.4);
+}
+
+.side-25 {
+	width: 25%;
+	float: left;
+	position: relative;
+	padding: 0 15px;
+	min-height: 1px;
+}
+
+.side-75 {
+	width: 75%;
+	float: right;
+	position: relative;
+	padding: 0 15px;
+	min-height: 1px;
+}
+
+.sidebar-brand {
+	font-size: 20px;
+	line-height: 35px;
+	text-align: center;
+	color: #263238;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+		0 1px 1px rgba(0, 0, 0, .25);
+	margin: 20px 0;
+}
+
+.directions {
+	font-size: 15px;
+	line-height: 15px;
+	text-align: center;
+}
+
+.place-name {
+	display: block;
+	font-size: 18px;
+	text-decoration: none;
+	color: #263238;
+	text-indent: 20px;
+	line-height: 40px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+		0 1px 1px rgba(0, 0, 0, .25);
+}
+
+.place-name:hover {
+	text-decoration: none;
+	color: #fff;
+	text-shadow: 0 0 4px black;
+}
+
+.place-name:active,
+.place-name:focus{
+	text-decoration: none;
+}
+
+.rating-large {
+	float: right;
+	display: inline;
+	margin: 0 10px 0 0;
+	padding: 20px;
+	background: blue;
+	color: #fff;
+	border-radius: 25px;
+	transform: translate( 0px, -40px);
+	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+		0 6px 30px 5px rgba(0, 0, 0, 0.12),
+		0 8px 10px -5px rgba(0, 0, 0, 0.4),
+		0 -16px 24px 2px rgba(0, 0, 0, 0.14),
+		0 -6px 30px 5px rgba(0, 0, 0, 0.12),
+		0 -8px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+.reviews {
+	line-height: 18px;
+	text-decoration: none;
+	padding: 0 0.5em 0 0;
+	transition: all 0.5s ease;
+}
+
+hr {
+	border: 1px solid #78909c;
+	margin: 10px;
+	background: #90a4ae;
+	width: 85%;
+	box-shadow: 2px 2px 10px #90A4AE;
+}
+
+.divider {
+	height: 10px;
+	box-shadow: inset 0 -2px 10px #607d8b,
+		inset 0 2px 5px #607d8b;
+	margin: 12px 0;
+}
+
+/* NavBar List Items */
+.small-div {
+	display: none;
+}
+
+.small-img-div {
+	margin: 0 15px;
+	float: left;
+	border-radius: 10px;
+	width: 40px;
+	height: 40px;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+		0 1px 8px 0 rgba(0, 0, 0, 0.12),
+		0 3px 3px -2px rgba(0, 0, 0, 0.4);
+}
+
+.small-place-name {
+	display: inline;
+	font-size: 20px;
+	text-decoration: none;
+	color: #ccc;
+	text-indent: 20px;
+	line-height: 40px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+		0 1px 1px rgba(0, 0, 0, .25);
+}
+
+.small-place-name:hover {
+	text-decoration: none;
+	color: #fff;
+	text-shadow: 0 0 4px black;
+}
+
+
+.small-rating {
+	display: inline;
+	float: right;
+	margin: 3px;
+	padding: 9px;
+	background: #0d47a1;
+	color: #fff ;
+	border-radius: 6px;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+		0 1px 8px 0 rgba(0, 0, 0, 0.12),
+		0 3px 3px -2px rgba(0, 0, 0, 0.4);
+}
+
+.longString {
+	font-size: 14px;
+}
+
+
+
+
+/* InfoWindow Styles */
+
+.infowindow-image {
+	float: left;
+}
+
+.info-title {
+	display: inline;
+	margin: 15px;
+}
+
+.rating {
+	display: inline;
+	float: right;
+	margin: 8px;
+	padding: 15px;
+	background: #0d47a1;
+	color: #fff ;
+	border-radius: 10px;
+	transform: translate( 0px, 0px);
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+		0 1px 8px 0 rgba(0, 0, 0, 0.12),
+		0 3px 3px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* Additional Filter Categories Styles */
+
+.radio-heading {
+	display:none;
+	color: #ccc;
+	margin: 12px auto;
+	text-align: center;
+	width: 100%;
+}
+
+.radio-divider {
+	display: none;
+	height: 10px;
+	background: #ccc;
+	box-shadow: inset 0 -2px 10px #607d8b,
+		inset 0 2px 10px #607d8b;
+}
+
+#radio-button-bar {
+	display: none;
+}
+
+#radio {
+	margin: auto 3px;
+	flex-grow: 1;
+}
+
+.radio-button {
+	margin: 2px 2px 2px 18px;
+	flex-grow: 1;
+	transition: all 0.5s ease;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+}
+
+.radio-button:hover,
+.radio-button:active,
+.radio-button:focus {
+	color: #fff;
+}
+
+/*   Responsive Styles Radio Button bar and size of sidebar columns */
+
+
+@media screen and (max-width: 767px) {
+	#radio-button-bar {
+		display: block;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.small-div,
+	.radio-divider,
+	.radio-heading {
+		display:block;
+	}
+
+	.side-25 {
+		width: 34%;
+		padding: 0 15px;
+	}
+
+	.side-75 {
+		width: 64%;
+		padding: 0 15px;
+	}
+}
+
+@media screen and (max-width: 415px) {
+	.my-btn {
+		padding: 6px 8px;
+	}
+}

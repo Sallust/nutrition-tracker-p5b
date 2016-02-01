@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neighborhood Map Project</title>
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="css/lib/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/lib/simple-sidebar.css">
+    <link rel="stylesheet" href="css/lib/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top my-nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Neighborhood Map Project</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <div class="navbar-form navbar-right">
+                    <div data-bind="foreach: arrayOfArrays " class="form-group btn-div">
+                        <button data-bind="click: $parent.setCurrentList.bind($data, $index()), text: $parent.buttonArray[$index()]" class="btn btn-success my-btn">CategoryButton</button>
+                    </div>
+                    <div class="radio-divider"></div>
+                    <div class="small-div">
+                        <input type="text" placeholder="Type here to Filter by Name" class="form-control my-input" data-bind="textInput: currentFilter">
+                        <div data-bind="foreach: filteredPlaces" id="small-list">
+                            <div class="row">
+                                <img src="" class="small-img-div" alt="place image" data-bind="attr: {src: photoUrl}">
+                                <a data-bind="text: name, click: $parent.setFocus, css: { longString: name.length > 21 }" class="small-place-name" href="#"></a><span data-bind="text: rating(), style: { background: rating() < 4.5 ? '#0D47A1' : '#43A047'}" class='small-rating'></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#"> Showing you
+                        <span data-bind="text: currentTitle"></span>
+                        in Charlottesville, VA!
+                    </a>
+                    <div class="divider"></div>
+                    <p class="directions">Choose another category above or filter current results</p>
+                </li>
+                <li>
+                    <input type="text" placeholder="Type here to Filter by Name" class="form-control my-input" data-bind="textInput: currentFilter" id="autocomplete">
+                </li>
+                <li class="filter-checkbox">
+                    <input type='checkbox' data-bind='checked: showFilter'>
+                    Show Additional Filters
+                </li>
+                <li id="radio-button-bar-2" data-bind="foreach: uniqueCategories, fadeIn: showFilter">
+                    <span class="radio-button" data-bind="text: $data">I'm text</span>
+                    <input type="radio" name="categoryGroup" data-bind="checked: $parent.categoryToShow, attr: {value: $data}">
+                </li>
+                <li class="divider"></li>
+                <!--ko foreach: { data: filteredPlaces, beforeRemove: slideAway, afterRender: fade }  -->
+                    <li>
+                        <div class="row place-entry">
+                            <div class="side-25">
+                                <img src="" class="img-div" alt="place image" data-bind="attr: {src: photoUrl}">
+                            </div>
+                            <div class="side-75">
+                                <a data-bind="text: name, click: $parent.setFocus" class="place-name" href="#"></a><span data-bind="text: rating(), style: { background: rating() < 4.5 ? '#0D47A1' : '#43A047'}" class='rating-large'></span>
+                                <p data-bind="text: address"></p>
+                                <p data-bind="text: phone"> </p>
+                                <a href="#" data-bind="text: wikiURL, attr: {href: wikiURL}"></a>
+                                <label>
+                                    <input type='checkbox' data-bind='checked: showReviews' />
+                                    Show Reviews
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <ul data-bind="foreach: reviewsArray, fadeIn: showReviews">
+                                <li data-bind="text: text" class="reviews"></li>
+                                <hr>
+                            </ul>
+                        </div>
+                    <div class="divider"></div>
+                    </li>
+                <!-- /ko -->
+            </ul>
+        </div>
+        <div class="container-fluid">
+            <div id="map">
+                Meow!!
+            </div>
+        </div>
+    </div>
+
+    <script src="js/lib/jquery-2.2.0.min.js"></script>
+    <script src="js/lib/jquery-ui.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/knockout-3.4.0.js"></script>
+    <script src="js/app.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG3IGYJ-z-wlGRpLr6sBEF_Ls9z4ZNDig&libraries=places&callback=googleSuccess" onerror="googleFail()">
+    </script>
+
+</body>
+</html>
