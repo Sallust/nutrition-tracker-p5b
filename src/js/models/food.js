@@ -12,7 +12,8 @@ app.Food = Backbone.Model.extend({
 		calories: 200,
 		protein: 4,
 		fat: 2,
-		added: false
+		added: false,
+		favorited: false
 	}
 
 	//TODO What additional logic should live here?
