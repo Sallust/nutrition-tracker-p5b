@@ -14,9 +14,22 @@ app.Food = Backbone.Model.extend({
 		fat: 2,
 		added: false,
 		favorited: false
+	},
+	initialize: function( attrs ) {
+		try {
+			//Test for correct values
+
+			this.set({
+				foodName: attrs.fields.item_name,
+				calories: attrs.fields.nf_calories
+			});
+
+		} catch (e) {
+			console.log(e)
+		}
 	}
 
 	//TODO What additional logic should live here?
 	//Will user be changing data somehow?
 
-})
+});
