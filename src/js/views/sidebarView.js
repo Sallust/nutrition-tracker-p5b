@@ -17,20 +17,26 @@ console.log("hey from the other side");
 app.SidebarView = Backbone.View.extend({
 	el: '#sidebar',
 
-	resultsTemplate: _.template($('#results-template').html() ),
+	//I might not need this template if template is delagated to indiv items
+	//resultsTemplate: _.template($('#results-template').html() ),
 
 	events: {
+		'click #search': 'startSearch'
 		//important events!!
 		//addition of new food item
+
+		//hit search button
 
 		//movement? or maybe that's handled in side file
 	},
 
 	initialize: function() {
+		this.$input = this.$('#autocomplete');
 
 	},
 
 	render: function() {
+
 
 	},
 
@@ -38,6 +44,14 @@ app.SidebarView = Backbone.View.extend({
 
 	},
 	addFoodView: function() {
+
+	},
+	startSearch: function () {
+		var searchTerm = this.$input.val().trim().replace(/ /g, '%20');
+		console.log(searchTerm)
+		app.searchResults.getSearch(searchTerm);
+
+
 
 	}
 

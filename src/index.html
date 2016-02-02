@@ -53,17 +53,26 @@
                     <p class="directions">Choose another category above or filter current results</p>
                 </li>
                 <li>
-                    <input type="text" placeholder="Type here to Filter by Name" class="form-control my-input" id="autocomplete">
+                    <input type="text" placeholder="Type here to Filter by Name" class="form-control my-input" id="autocomplete"><button id="search">🔍</button>
                 </li>
-                <li class="filter-checkbox">
-                    <input type='checkbox' data-bind='checked: showFilter'>
-                    Show Additional Filters
-                </li>
-                <li id="radio-button-bar-2" data-bind="foreach: uniqueCategories, fadeIn: showFilter">
-                    <span class="radio-button" data-bind="text: $data">I'm text</span>
-                    <input type="radio" name="categoryGroup" data-bind="checked: $parent.categoryToShow, attr: {value: $data}">
-                </li>
+
                 <li id="before-search" class="divider"></li>
+                    <div id="search-div">
+                        <ul id="search-ul">
+                            <li class="search-item">
+                                <h3 class="search-name">Broccoli </h3>
+                                <button>★</button>
+                                <span class="search-calorie-span">314</span>
+                                <hr>
+
+
+
+                            </li>
+
+                        </ul>
+
+
+                    </div>
                 <!--ko foreach: { data: filteredPlaces, beforeRemove: slideAway, afterRender: fade }  -->
                     <li>
                         <div class="row place-entry">
@@ -71,14 +80,11 @@
                                 <img src="" class="img-div" alt="place image" data-bind="attr: {src: photoUrl}">
                             </div>
                             <div class="side-75">
-                                <a data-bind="text: name, click: $parent.setFocus" class="place-name" href="#"></a><span data-bind="text: rating(), style: { background: rating() < 4.5 ? '#0D47A1' : '#43A047'}" class='rating-large'></span>
+                                <a data-bind="text: name, click: $parent.setFocus" class="place-name" href="#"></a>
                                 <p data-bind="text: address"></p>
                                 <p data-bind="text: phone"> </p>
                                 <a href="#" data-bind="text: wikiURL, attr: {href: wikiURL}"></a>
-                                <label>
-                                    <input type='checkbox' data-bind='checked: showReviews' />
-                                    Show Reviews
-                                </label>
+
                             </div>
                         </div>
                         <div class="row">
@@ -180,6 +186,14 @@
         </ul>
     </script>
 
+    <script type="text/template" id="search-item-template">
+        <h3 class="search-name"><%= foodName %> </h3>
+        <button>★</button>
+        <span class="search-calorie-span"><%= calories %></span>
+        <hr>
+
+    </script>
+
 
 
 
@@ -209,6 +223,7 @@
 
     <script src="js/views/foodView.js"></script>
     <script src="js/views/totalsView.js"></script>
+    <script src="js/views/searchItemView.js"></script>
     <script src="js/views/sidebarView.js"></script>
     <script src="js/views/foodListView.js"></script>
 
