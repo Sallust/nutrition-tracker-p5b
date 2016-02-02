@@ -25,6 +25,9 @@ app.FoodListView = Backbone.View.extend({
 		this.listenTo(app.foodList, 'all', this.render);
 
 	},
+	render: function() {
+
+	},
 
 	addFood: function( food ) {
 		var newView = new app.FoodView({ model: food});

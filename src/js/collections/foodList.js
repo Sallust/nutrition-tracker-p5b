@@ -7,7 +7,7 @@ console.log('Hello from the food list')
 var FoodList = Backbone.Collection.extend({
 
 	//This will be list of food models
-	model: app.food
+	model: app.Food
 
 	//eventually filter functions will be added
 

@@ -8,7 +8,7 @@ console.log ('Hi from the food model');
 app.Food = Backbone.Model.extend({
 	//default food properties
 	defaults: {
-		name: 'Food',
+		foodName: 'Sample Food',
 		calories: 200,
 		protein: 4,
 		fat: 2,
