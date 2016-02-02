@@ -24,6 +24,9 @@ app.FoodListView = Backbone.View.extend({
 		this.listenTo(app.foodList, 'add', this.addFood);
 		this.listenTo(app.foodList, 'all', this.render);
 
+		//for now this is the mother view so totals gets initialized here
+		app.totalsView = new app.TotalsView();
+
 	},
 	render: function() {
 

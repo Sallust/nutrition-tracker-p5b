@@ -7,7 +7,7 @@ console.log('Hello from the food list')
 var FoodList = Backbone.Collection.extend({
 
 	//This will be list of food models
-	model: app.Food
+	model: app.Food,
 
 	//eventually filter functions will be added
 
@@ -16,6 +16,13 @@ var FoodList = Backbone.Collection.extend({
 
 	//favorited:
 
+	getTotalCalories: function() {
+		var total = 0;
+		this.each(function(food) {
+			total += food.get('calories');
+		})
+		return total;
+	}
 
 
 })

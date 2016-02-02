@@ -116,13 +116,16 @@
             <header id="header">
                 <h1>Food App</h1>
             </header>
-        <section id="food-main">
-            <div class="food-list-header">
-                <h3>Food List</h3>
-            </div>
-            <ul id="food-list"></ul>
+            <section id="food-main">
+                <div class="food-list-header">
+                    <h3>Food List</h3>
+                </div>
+                <ul id="food-list"></ul>
 
-        </section>
+            </section>
+            <section id="totals-view">
+
+            </section>
 
         </section>
 
@@ -159,9 +162,23 @@
     <script type="text/template" id="food-template">
         <div class="view">
             <label><%= foodName %></label>
-            <button class="destroy"></button>
+            <button class="destroy">Destroy</button>
             <span>   <%= calories %> Calories </span>
         </div>
+    </script>
+
+     <script type="text/template" id="totals-template">
+        <ul>
+          <li>
+            Calories: <%= calorieTotal %>
+          </li>
+          <li>
+            Fats:
+          </li>
+          <li>
+            Protein:
+          </li>
+        </ul>
     </script>
 
 
@@ -189,6 +206,7 @@
     <script src="js/models/food.js"></script>
     <script src="js/collections/foodList.js"></script>
     <script src="js/views/foodView.js"></script>
+    <script src="js/views/totalsView.js"></script>
     <script src="js/views/foodListView.js"></script>
 
     <script src="js/foodApp.js"></script>
