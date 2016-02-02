@@ -12,6 +12,10 @@ app.Food = Backbone.Model.extend({
 		calories: 200,
 		protein: 4,
 		fat: 2,
+		carb: 45,
+		fiber: 0,
+		sugar: 2,
+		cholest: 0,
 		added: false,
 		favorited: false
 	},
@@ -21,7 +25,14 @@ app.Food = Backbone.Model.extend({
 
 			this.set({
 				foodName: attrs.fields.item_name,
-				calories: attrs.fields.nf_calories
+				calories: attrs.fields.nf_calories,
+				protein: attrs.fields.nf_protein,
+				fat: attrs.fields.nf_total_fat,
+				carb: attrs.fields.nf_total_carbohydrate,
+				fiber: attrs.fields.nf_dietary_fiber,
+				sugar: attrs.fields.nf_sugars,
+				cholest: attrs.fields.nf_cholesterol
+
 			});
 
 		} catch (e) {
