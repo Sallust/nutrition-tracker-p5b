@@ -16,6 +16,7 @@ app.FoodView = Backbone.View.extend({
 	template:_.template( $('#food-template').html() ),
 
 	events: {
+		'click .destroy': 'clear'
 		//click delete
 		//click save?
 	},

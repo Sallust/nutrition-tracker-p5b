@@ -30,7 +30,7 @@ app.SearchItemView = Backbone.View.extend({
 	},
 
 	addThisFood: function () {
-		app.foodList.create ( this.model )
+		app.foodList.add ( this.model ); //I think create is causing weird errors
 	}
 
 })

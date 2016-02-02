@@ -24,9 +24,6 @@ var SearchResults = Backbone.Collection.extend({
 		//Is that needed?
 	},
 	getSearch: function( query ) {
-		console.log(this);
-		console.log(this.url);
-		console.log(this.urlString);
 		this.url = this.urlString.replace('^foodName^', query)
 		this.fetch();
 	}
