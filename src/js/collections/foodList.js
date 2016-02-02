@@ -20,4 +20,4 @@ var FoodList = Backbone.Collection.extend({
 
 })
 
-app.FoodList = new FoodList();
+app.foodList = new FoodList();

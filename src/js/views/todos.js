@@ -48,7 +48,7 @@ app.TodoView = Backbone.View.extend({
 		this.$el.toggleClass( 'hidden', this.isHidden() );
 	},
 
-	//Determines if item should be hidden
+	//Determines if item should be hidden Only needed for filter??
 	isHidden: function() {
 		var isCompleted = this.model.get('completed');
 		return ( //hidden cases only

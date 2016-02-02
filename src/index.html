@@ -109,6 +109,23 @@
             <p>Double-click to edit a todo</p>
             <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
         </div>
+
+
+
+        <section id="foodApp">
+            <header id="header">
+                <h1>Food App</h1>
+            </header>
+        <section id="food-main">
+            <div class="food-list-header">
+                <h3>Food List</h3>
+            </div>
+            <ul id="food-list"></ul>
+
+        </section>
+
+        </section>
+
     </div>
     <script type="text/template" id="item-template">
         <div class="view">
@@ -139,6 +156,13 @@
     </script>
 
 
+    <script type="text/template" id="food-template">
+        <div class="view">
+            <label><%= name %></label>
+            <button class="destroy"></button>
+        </div>
+    </script>
+
 
 
     <script src="js/lib/jquery-2.2.0.min.js"></script>
@@ -160,6 +184,14 @@
     <script src="js/routers/router.js"></script>
 
     <script src="js/app.js"></script>
+
+    <script src="js/models/food.js"></script>
+    <script src="js/collections/foodList.js"></script>
+    <script src="js/views/foodView.js"></script>
+    <script src="js/views/foodListView.js"></script>
+
+    <script src="js/foodApp.js"></script>
+
 
 
 </body>
