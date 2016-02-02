@@ -21,7 +21,9 @@ app.SidebarView = Backbone.View.extend({
 	//resultsTemplate: _.template($('#results-template').html() ),
 
 	events: {
-		'click #search': 'startSearch'
+		'click #search': 'startSearch',
+		'keypress #autocomplete': 'onEnter'
+
 		//important events!!
 		//addition of new food item
 
@@ -56,8 +58,11 @@ app.SidebarView = Backbone.View.extend({
 		console.log(searchTerm)
 		app.searchResults.getSearch(searchTerm);
 
-
-
+	},
+	onEnter: function( e ) {
+		if( e.keyCode === 13) { //ENTER KEY
+			this.startSearch();
+		}
 	}
 
 })
