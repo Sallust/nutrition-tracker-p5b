@@ -33,10 +33,15 @@ app.SidebarView = Backbone.View.extend({
 	initialize: function() {
 		this.$input = this.$('#autocomplete');
 
+		this.listenTo(app.searchResults, 'all', this.render);
+
 	},
 
 	render: function() {
-
+		app.searchResults.each(function(food) {
+			var itemView = new app.SearchItemView({ model: food });
+			$('#search-ul').append( itemView.render().el);
+		})
 
 	},
 
