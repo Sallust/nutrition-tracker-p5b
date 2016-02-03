@@ -40,11 +40,12 @@ app.SidebarView = Backbone.View.extend({
 
 		this.listenTo(app.searchResults, 'reset', this.render);
 		this.listenTo(app.masterList, 'change', this.renderFavorites);
+		this.listenTo(app.foodList, 'add', this.close);  //when an item has been added to food list (i.e. user has selected a search item or favorite item), close
 		this.renderFavorites();
 	},
 
 	render: function() {
-		//this.$search.html(''); //clears any existing search items
+		this.$search.html(''); //clears any existing search items
 
 		app.searchResults.each(function(food) {
 			var itemView = new app.SearchItemView({ model: food });
@@ -82,6 +83,7 @@ app.SidebarView = Backbone.View.extend({
 
 	close: function() {
 		console.log("Fancy closing logic");
+		this.$favorites.show();
 		$('#wrapper').toggleClass('toggled');
 
 	}

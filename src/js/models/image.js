@@ -21,7 +21,7 @@ app.ImageModel = Backbone.Model.extend({
 
 	},
 
-	urlString: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=d0b3e0e79e625b637588dbed0555d9d3&tags=food&text=^imageQuery^&sort=relevance&content_type=1&per_page=2&format=json&nojsoncallback=1",
+	urlString: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=48379916a60871c6908ced4b30cd156f&tags=food&text=^imageQuery^&sort=relevance&content_type=1&per_page=2&format=json&nojsoncallback=1",
 
 	initialize: function() {
 		//on init, name is set at construction
