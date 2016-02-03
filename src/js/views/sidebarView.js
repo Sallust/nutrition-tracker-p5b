@@ -35,7 +35,7 @@ app.SidebarView = Backbone.View.extend({
 	initialize: function() {
 		this.$input = this.$('#autocomplete');
 
-		this.listenTo(app.searchResults, 'all', this.render);
+		this.listenTo(app.searchResults, 'reset', this.render);
 
 	},
 

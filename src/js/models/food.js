@@ -19,6 +19,7 @@ app.Food = Backbone.Model.extend({
 		added: false,
 		favorited: false
 	},
+
 	initialize: function( attrs ) {
 		try {
 			//Test for correct values
@@ -31,9 +32,11 @@ app.Food = Backbone.Model.extend({
 				carb: attrs.fields.nf_total_carbohydrate,
 				fiber: attrs.fields.nf_dietary_fiber,
 				sugar: attrs.fields.nf_sugars,
-				cholest: attrs.fields.nf_cholesterol
-
+				cholest: attrs.fields.nf_cholesterol,
+				//image: new app.ImageModel({name: attrs.fields.item_name})
 			});
+
+
 
 		} catch (e) {
 			console.log(e)
