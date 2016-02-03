@@ -30,8 +30,6 @@ app.ImageModel = Backbone.Model.extend({
 		var textQuery = encodeURIComponent(this.get('name').split(' ', 3).join(' '))
 		//var test = encodeURIComponent(this.get('name')).replace(/%20/g, '+');
 
-		console.log(test);
-
 
 
 		this.url = this.urlString.replace('^imageQuery^', textQuery);

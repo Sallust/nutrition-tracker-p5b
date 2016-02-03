@@ -40,6 +40,7 @@ app.SidebarView = Backbone.View.extend({
 	},
 
 	render: function() {
+		this.$('#search-ul').html(''); //clears any existing search items
 
 		app.searchResults.each(function(food) {
 			var itemView = new app.SearchItemView({ model: food });
@@ -55,7 +56,7 @@ app.SidebarView = Backbone.View.extend({
 
 	},
 	startSearch: function () {
-		var searchTerm = this.$input.val().trim().replace(/ /g, '%20');
+		var searchTerm = this.$input.val().trim().replace(/ /g, '%20'); //makes search term pretty and ready to make ajax request
 		console.log(searchTerm)
 		app.searchResults.getSearch(searchTerm);
 
