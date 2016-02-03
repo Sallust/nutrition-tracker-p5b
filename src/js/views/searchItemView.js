@@ -23,7 +23,8 @@ app.SearchItemView = Backbone.View.extend({
 
 	initialize: function() {
 		this.listenTo(this.model.get('image'), 'change', this.render);
-		this.listenTo(this.model, 'change:favorited', this.render)
+		this.listenTo(this.model, 'change:favorited', this.render);
+		this.listenTo(this.model, 'remove', this.remove);
 		//listen to its model? I don't think the model will change so..
 
 	},

@@ -39,8 +39,8 @@ app.AppView = Backbone.View.extend({
 		app.Todos.fetch(); //merges model state with attributes from the server
 	},
 
-	//Re-rendering the app, just refreshes the statistics
-	//rest of app does not change
+	//Re-rendering the app,  refreshes the statistics
+	//hides main component when there are no todos
 	render: function() {
 		var completed = app.Todos.completed().length; //calls the defined collection method
 		var remaining = app.Todos.remaining().length;

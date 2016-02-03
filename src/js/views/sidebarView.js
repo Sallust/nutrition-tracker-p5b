@@ -38,10 +38,14 @@ app.SidebarView = Backbone.View.extend({
 		this.$search = this.$('#search-ul');
 		this.$favorites = this.$('#favorites-ul');
 
-		this.listenTo(app.searchResults, 'reset', this.render);
+		this.listenTo(app.searchResults, 'reset', this.showSearch); //rest triggered by fetching data
 		this.listenTo(app.masterList, 'change', this.renderFavorites);
 		this.listenTo(app.foodList, 'add', this.close);  //when an item has been added to food list (i.e. user has selected a search item or favorite item), close
-		this.renderFavorites();
+
+		this.listenTo(app.masterList, 'add', this.addFavorite);
+		this.listenTo(app.masterList, 'reset', this.addAllFavorites);
+
+		//this.renderFavorites();
 	},
 
 	render: function() {
@@ -53,12 +57,32 @@ app.SidebarView = Backbone.View.extend({
 		}, this)//context
 
 	},
+	addFavorite: function( food ) {
+		var favItemView = new app.SearchItemView({ model: food });
+		$('#favorites-ul').append( favItemView.render().el );
+	},
+	addAllFavorites: function() {
+		this.$favorites.html('');
+		app.masterList.each(this.addFavorite, this);
+	},
+
+	/*
 	renderFavorites: function() {
 
 		app.masterList.favorited().forEach(function( food ) {
 			var favItemView = new app.SearchItemView({ model: food});
 			this.$favorites.append( favItemView.render().el);
 		})
+	}, */
+	showSearch: function() {
+		this.$favorites.hide();
+		this.$search.show();
+		this.$search.html(''); //clears any existing search items
+
+		app.searchResults.each(function(food) {
+			var itemView = new app.SearchItemView({ model: food });
+			this.$search.append( itemView.render().el);
+		}, this)//context
 	},
 
 	addFoodModel: function() {
@@ -68,11 +92,10 @@ app.SidebarView = Backbone.View.extend({
 
 	},
 	startSearch: function () {
-		this.$favorites.hide();
 		var searchTerm = this.$input.val().trim().replace(/ /g, '%20'); //makes search term pretty and ready to make ajax request
 		app.searchResults.getSearch(searchTerm);
 
-
+		this.$input.val('')
 
 	},
 	onEnter: function( e ) {
@@ -81,9 +104,9 @@ app.SidebarView = Backbone.View.extend({
 		}
 	},
 
-	close: function() {
-		console.log("Fancy closing logic");
+	close: function() {  //addition of anything to food list causes this
 		this.$favorites.show();
+		this.$search.hide();
 		$('#wrapper').toggleClass('toggled');
 
 	}
