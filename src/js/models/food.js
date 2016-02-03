@@ -18,7 +18,7 @@ app.Food = Backbone.Model.extend({
 		cholest: 0,
 		added: false,
 		favorited: false,
-		image: ''
+		imageUrl: 'http://lorempixel.com/50/50/food'
 	},
 
 	initialize: function( attrs ) {
@@ -34,8 +34,13 @@ app.Food = Backbone.Model.extend({
 				fiber: attrs.fields.nf_dietary_fiber,
 				sugar: attrs.fields.nf_sugars,
 				cholest: attrs.fields.nf_cholesterol,
-				image: new app.ImageModel({name: attrs.fields.item_name})
+				//image: new app.ImageModel({name: attrs.fields.item_name})
 			});
+			var newImage = new app.ImageModel({name: attrs.fields.item_name})
+
+			this.listenTo(newImage, 'change:url', this.setImage)
+
+			//this.setImage({name: attrs.fields.item_name})
 
 
 
@@ -47,6 +52,11 @@ app.Food = Backbone.Model.extend({
 		this.set({
 			favorited: !this.get('favorited')
 		})
+	},
+	setImage: function( model, url) {
+		this.set('imageUrl', url);
+		console.log(url);
+		//var newImage = new app.ImageModel(obj)
 	}
 
 	//TODO What additional logic should live here?

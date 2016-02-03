@@ -22,9 +22,9 @@ app.SearchItemView = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		this.listenTo(this.model.get('image'), 'change', this.render);
+		this.listenTo(this.model, 'change:imageUrl', this.render);
 		this.listenTo(this.model, 'change:favorited', this.render);
-		this.listenTo(this.model, 'remove', this.remove);
+		this.listenTo(this.model, 'destroy', this.remove);
 		//listen to its model? I don't think the model will change so..
 
 	},
@@ -33,7 +33,7 @@ app.SearchItemView = Backbone.View.extend({
 		this.$el.html( this.template( {
 			foodName: this.model.get('foodName'),
 			calories: this.model.get('calories'),
-			url: this.model.get('image').get('url'),
+			url: this.model.get('imageUrl'),
 			favorited: this.model.get('favorited')
 
 			} ) );
@@ -42,16 +42,16 @@ app.SearchItemView = Backbone.View.extend({
 	},
 
 	addThisFood: function () {
-		app.foodList.add ( this.model ); //I think create is causing weird errors
-		//app.sidebarView.close(); //close side window
+		app.foodList.create ( this.model.attributes ); //I think create is causing weird errors
+		//app.sidebarView.close(); //close side window this.model
 	},
 	makeFavorite: function() {
 		this.model.set('favorited', true);
-		app.masterList.add( this.model );
+		app.masterList.create( this.model );
 	},
 	removeFavorite:function () {
 		this.model.set('favorited', false);
-		app.masterList.remove( this.model );
+		app.masterList.destroy( this.model );
 	}
 
 })

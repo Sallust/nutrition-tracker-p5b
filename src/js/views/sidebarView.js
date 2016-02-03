@@ -38,8 +38,7 @@ app.SidebarView = Backbone.View.extend({
 		this.$search = this.$('#search-ul');
 		this.$favorites = this.$('#favorites-ul');
 
-		this.listenTo(app.searchResults, 'reset', this.showSearch); //rest triggered by fetching data
-		this.listenTo(app.masterList, 'change', this.renderFavorites);
+		this.listenTo(app.searchResults, 'reset', this.showSearch); //reset triggered by fetching data
 		this.listenTo(app.foodList, 'add', this.close);  //when an item has been added to food list (i.e. user has selected a search item or favorite item), close
 
 		this.listenTo(app.masterList, 'add', this.addFavorite);
@@ -58,12 +57,14 @@ app.SidebarView = Backbone.View.extend({
 
 	},
 	addFavorite: function( food ) {
-		var favItemView = new app.SearchItemView({ model: food });
-		$('#favorites-ul').append( favItemView.render().el );
+		if(food.get('favorited')){
+			var favItemView = new app.SearchItemView({ model: food });
+			$('#favorites-ul').append( favItemView.render().el );
+		}
 	},
 	addAllFavorites: function() {
 		this.$favorites.html('');
-		app.masterList.each(this.addFavorite, this);
+		app.masterList.favorited().each(this.addFavorite, this);
 	},
 
 	/*

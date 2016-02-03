@@ -35,11 +35,11 @@ app.FoodView = Backbone.View.extend({
 		return this;
 	},
 	makeFavorite: function() {
-		this.model.set('favorited', true);
+		this.model.save('favorited', true);
 		app.masterList.add( this.model );
 	},
 	removeFavorite:function () {
-		this.model.set('favorited', false);
+		this.model.save('favorited', false);
 		app.masterList.remove( this.model );
 	},
 	clear: function() {

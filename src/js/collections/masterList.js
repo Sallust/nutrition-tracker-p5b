@@ -5,9 +5,12 @@ var app = app || {};
 
 console.log("MASTER MASTER");
 
-var MasterList = Backbone.Collection.extend({
+var MasterList = Backbone.Firebase.Collection.extend({
 
 	model: app.Food,
+
+	url:'https://my-nutrition-tracker.firebaseio.com/masterList',
+
 
 	//something with local storage ?
 
