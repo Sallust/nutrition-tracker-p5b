@@ -19,12 +19,18 @@ app.SearchItemView = Backbone.View.extend({
 	},
 
 	initialize: function() {
+		this.listenTo(this.model.get('image'), 'change', this.render);
 		//listen to its model? I don't think the model will change so..
 
 	},
 
 	render: function() {
-		this.$el.html( this.template( this.model.attributes ) );
+		this.$el.html( this.template( {
+			foodName: this.model.get('foodName'),
+			calories: this.model.get('calories'),
+			url: this.model.get('image').get('url')
+
+			} ) );
 		return this;
 
 	},

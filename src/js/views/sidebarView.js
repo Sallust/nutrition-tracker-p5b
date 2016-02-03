@@ -40,6 +40,7 @@ app.SidebarView = Backbone.View.extend({
 	},
 
 	render: function() {
+
 		app.searchResults.each(function(food) {
 			var itemView = new app.SearchItemView({ model: food });
 			$('#search-ul').append( itemView.render().el);

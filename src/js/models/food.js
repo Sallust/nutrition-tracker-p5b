@@ -17,7 +17,8 @@ app.Food = Backbone.Model.extend({
 		sugar: 2,
 		cholest: 0,
 		added: false,
-		favorited: false
+		favorited: false,
+		image: ''
 	},
 
 	initialize: function( attrs ) {
@@ -33,7 +34,7 @@ app.Food = Backbone.Model.extend({
 				fiber: attrs.fields.nf_dietary_fiber,
 				sugar: attrs.fields.nf_sugars,
 				cholest: attrs.fields.nf_cholesterol,
-				//image: new app.ImageModel({name: attrs.fields.item_name})
+				image: new app.ImageModel({name: attrs.fields.item_name})
 			});
 
 

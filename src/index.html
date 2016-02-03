@@ -179,11 +179,13 @@
     </script>
 
     <script type="text/template" id="search-item-template">
-        <h3 class="search-name"><%= foodName %> </h3>
-        <button>★</button>
-        <span class="search-calorie-span"><%= calories %></span>
-        <hr>
-
+        <div class="row">
+            <img src="<%= url %>" class="" alt="food-image">
+            <h3 class="search-name"><%= foodName %> </h3>
+            <button>★</button>
+            <span class="search-calorie-span"><%= calories %></span>
+            <hr>
+        </div>
     </script>
 
 
@@ -208,9 +210,9 @@
     <script src="js/routers/router.js"></script>
 
     <script src="js/app.js"></script>
-
+    <script src="js/models/image.js"></script>
     <script src="js/models/food.js"></script>
-    <script src="js/models/images.js"></script>
+
     <script src="js/collections/foodList.js"></script>
     <script src="js/collections/searchResults.js"></script>
 
