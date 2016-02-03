@@ -3,7 +3,13 @@
 	display: inline;
 }
 
+.star {
+	color: grey;
+}
 
+.favorited {
+	color:green;
+}
 
 
 
@@ -12,6 +18,10 @@
 	display: inline;
 	margin: 0;
 	line-height: 50px;
+	cursor: pointer;
+}
+.search-name:hover {
+	color:white;
 }
 
 .search-calorie-span {

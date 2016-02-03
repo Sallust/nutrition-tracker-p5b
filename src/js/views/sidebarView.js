@@ -35,19 +35,29 @@ app.SidebarView = Backbone.View.extend({
 
 	initialize: function() {
 		this.$input = this.$('#autocomplete');
+		this.$search = this.$('#search-ul');
+		this.$favorites = this.$('#favorites-ul');
 
 		this.listenTo(app.searchResults, 'reset', this.render);
-
+		this.listenTo(app.masterList, 'change', this.renderFavorites);
+		this.renderFavorites();
 	},
 
 	render: function() {
-		this.$('#search-ul').html(''); //clears any existing search items
+		//this.$search.html(''); //clears any existing search items
 
 		app.searchResults.each(function(food) {
 			var itemView = new app.SearchItemView({ model: food });
-			$('#search-ul').append( itemView.render().el);
-		})
+			this.$search.append( itemView.render().el);
+		}, this)//context
 
+	},
+	renderFavorites: function() {
+
+		app.masterList.favorited().forEach(function( food ) {
+			var favItemView = new app.SearchItemView({ model: food});
+			this.$favorites.append( favItemView.render().el);
+		})
 	},
 
 	addFoodModel: function() {
@@ -57,9 +67,11 @@ app.SidebarView = Backbone.View.extend({
 
 	},
 	startSearch: function () {
+		this.$favorites.hide();
 		var searchTerm = this.$input.val().trim().replace(/ /g, '%20'); //makes search term pretty and ready to make ajax request
-		console.log(searchTerm)
 		app.searchResults.getSearch(searchTerm);
+
+
 
 	},
 	onEnter: function( e ) {

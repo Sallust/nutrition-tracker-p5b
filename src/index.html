@@ -59,6 +59,7 @@
 
                 <li id="before-search" class="divider"></li>
                     <div id="search-div">
+                        <ul id="favorites-ul"></ul>
                         <ul id="search-ul">
 
 
@@ -162,6 +163,7 @@
     <script type="text/template" id="food-template">
         <div class="view">
             <label><%= foodName %></label>
+            <button class="star <%= favorited ? 'favorited' : '' %>">★</button>
             <button class="destroy">Delete</button>
             <span>   <%= calories %> Calories </span>
         </div>
@@ -185,7 +187,7 @@
         <div class="row">
             <img src="<%= url %>" class="" alt="food-image">
             <h3 class="search-name"><%= foodName %> </h3>
-            <button>★</button>
+            <button class="star <%= favorited ? 'favorited' : '' %> ">★</button>
             <span class="search-calorie-span"><%= calories %></span>
             <hr>
         </div>
@@ -217,6 +219,7 @@
     <script src="js/models/food.js"></script>
 
     <script src="js/collections/foodList.js"></script>
+    <script src="js/collections/masterList.js"></script>
     <script src="js/collections/searchResults.js"></script>
 
     <script src="js/views/foodView.js"></script>

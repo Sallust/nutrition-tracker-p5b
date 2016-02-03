@@ -42,6 +42,11 @@ app.Food = Backbone.Model.extend({
 		} catch (e) {
 			console.log(e)
 		}
+	},
+	toggleFavorite: function() {
+		this.set({
+			favorited: !this.get('favorited')
+		})
 	}
 
 	//TODO What additional logic should live here?
