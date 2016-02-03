@@ -9,7 +9,15 @@ var FoodList = Backbone.Firebase.Collection.extend({
 	//This will be list of food models
 	model: app.Food,
 
-	url:'https://my-nutrition-tracker.firebaseio.com/foodList',
+	date: function () {
+		var now = new Date(Date.now())
+		return now.toDateString();
+	},
+
+	url: (function() {
+		return 'https://my-nutrition-tracker.firebaseio.com/foodList' + encodeURIComponent(this.date);
+	}()),
+
 
 	//eventually filter functions will be added
 
