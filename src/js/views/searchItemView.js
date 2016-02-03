@@ -37,6 +37,7 @@ app.SearchItemView = Backbone.View.extend({
 
 	addThisFood: function () {
 		app.foodList.add ( this.model ); //I think create is causing weird errors
+		app.sidebarView.close(); //close side window
 	}
 
 })

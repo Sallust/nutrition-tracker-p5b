@@ -46,11 +46,12 @@
         <div id="sidebar-wrapper">
             <ul id="sidebar" class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Select your favorite food or search for a new food
+                    <a href="#"><h3 class="sidebar-title">Add Food</h3>
+                        <button id="close">✖</button>
+
                     </a>
                     <div class="divider"></div>
-                    <p class="directions">Choose another category above or filter current results</p>
+                    <p class="directions">Select your favorite food or search for a new food</p>
                 </li>
                 <li>
                     <input type="text" placeholder="Type here to Filter by Name" class="form-control my-input" id="autocomplete"><button id="search">🔍</button>
@@ -115,9 +116,11 @@
             </header>
             <section id="food-main">
                 <div class="food-list-header">
-                    <h3>Food List</h3>
+                    <h3 class="inline">Food List</h3><button class="addFood">➕</button>
                 </div>
                 <ul id="food-list"></ul>
+                <button class="addFood">Add Food</button>
+
 
             </section>
             <section id="totals-view">

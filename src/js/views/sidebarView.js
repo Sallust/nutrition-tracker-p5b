@@ -22,7 +22,8 @@ app.SidebarView = Backbone.View.extend({
 
 	events: {
 		'click #search': 'startSearch',
-		'keypress #autocomplete': 'onEnter'
+		'keypress #autocomplete': 'onEnter',
+		'click #close': 'close'
 
 		//important events!!
 		//addition of new food item
@@ -65,6 +66,12 @@ app.SidebarView = Backbone.View.extend({
 		if( e.keyCode === 13) { //ENTER KEY
 			this.startSearch();
 		}
+	},
+
+	close: function() {
+		console.log("Fancy closing logic");
+		$('#wrapper').toggleClass('toggled');
+
 	}
 
 })

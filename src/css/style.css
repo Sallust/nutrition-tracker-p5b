@@ -31,7 +31,13 @@
 		0 -8px 10px -5px rgba(0, 0, 0, 0.4);
 }
 
+.sidebar-title {
+	display: inline;
+}
 
+.inline {
+	display: inline;
+}
 
 
 /* New CSS */
