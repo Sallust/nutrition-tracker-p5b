@@ -11,8 +11,8 @@ var FoodList = Backbone.Firebase.Collection.extend({
 
 	initialize: function() {
 		var now = new Date(Date.now());
-		var date = now.ISOString();
-		this.url = 'https://my-nutrition-tracker.firebaseio.com/foodList' + encodeURIComponent(date);
+		var date = now.getDate();
+		this.url = 'https://my-nutrition-tracker.firebaseio.com/foodList/' + date;
 	},
 
 /*
