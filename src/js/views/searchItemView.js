@@ -47,7 +47,7 @@ app.SearchItemView = Backbone.View.extend({
 	},
 	makeFavorite: function() {
 		this.model.set('favorited', true);
-		app.masterList.create( this.model );
+		app.masterList.create( this.model.attributes );
 	},
 	removeFavorite:function () {
 		this.model.set('favorited', false);
