@@ -115,6 +115,11 @@
             <header id="header">
                 <h1>Food App</h1>
             </header>
+            <section id="date">
+                <button id="left-btn">〈</button>
+                <h3 class="inline">Today</h3>
+                <button id="right-btn">〉</button>
+            </section>
             <section id="food-main">
                 <div class="food-list-header">
                     <h3 class="inline">Food List</h3><button class="addFood">➕</button>
@@ -193,6 +198,11 @@
         </div>
     </script>
 
+    <script type="text/template" id="date-template">
+
+
+    </script>
+
 
 
 
@@ -217,12 +227,14 @@
     <script src="js/app.js"></script>
     <script src="js/models/image.js"></script>
     <script src="js/models/food.js"></script>
+    <script src="js/models/date.js"></script>
 
     <script src="js/collections/foodList.js"></script>
     <script src="js/collections/masterList.js"></script>
     <script src="js/collections/searchResults.js"></script>
 
     <script src="js/views/foodView.js"></script>
+    <script src="js/views/dateView.js"></script>
     <script src="js/views/totalsView.js"></script>
     <script src="js/views/searchItemView.js"></script>
     <script src="js/views/sidebarView.js"></script>

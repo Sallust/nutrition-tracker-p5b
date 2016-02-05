@@ -6,5 +6,5 @@ $(function() {
 	//when dom elements are ready
 
 	//just for now I'm calling the food box
-	new app.FoodListView();
+	app.foodListView = new app.FoodListView();
 })

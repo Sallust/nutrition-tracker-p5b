@@ -9,11 +9,33 @@ var FoodList = Backbone.Firebase.Collection.extend({
 	//This will be list of food models
 	model: app.Food,
 
+	url:'',
+
+	urlStr: 'https://my-nutrition-tracker.firebaseio.com/foodList/',
+
 	initialize: function() {
-		var now = new Date(Date.now());
-		var date = now.getDate();
-		this.url = 'https://my-nutrition-tracker.firebaseio.com/foodList/' + date;
+		this.listenTo(app.dateModel, 'change:todayFileStr', this.getDifferentDay);
+
+		this.url =  new Firebase(this.urlStr + app.dateModel.get('todayFileStr'));
+		//this.url = this.urlStr + '2016-02-03';
+		//setTimeout(this.trigger('reset'), 10, this)
+		var self = this;
+		setTimeout( function(self) { //Just enough time to wait for listeners to be updated to new instance of Foodlist
+			self.trigger('reset')
+		},10, self);
 	},
+
+	getDifferentDay: function(model, newStr) {
+		//this.url = this.urlStr + newStr;
+		console.log(this.url);
+
+		app.foodList = new FoodList();
+		//this.fetch({reset: true});new Firebase
+	},
+	fetchDifferentDay: function( date ) {
+		this.url = this.urlStr + date
+	},
+
 
 /*
 	date: function () {
