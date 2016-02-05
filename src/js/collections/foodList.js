@@ -1,3 +1,5 @@
+'use strict'
+
 var app = app || {}
 
 console.log('Hello from the food list')
@@ -16,7 +18,9 @@ var FoodList = Backbone.Firebase.Collection.extend({
 	initialize: function() {
 		this.listenTo(app.dateModel, 'change:todayFileStr', this.getDifferentDay);
 
-		this.url =  new Firebase(this.urlStr + app.dateModel.get('todayFileStr'));
+		//this.url =  new Firebase(this.urlStr + app.dateModel.get('todayFileStr'));
+		this.url =  this.urlStr + app.dateModel.get('todayFileStr')
+
 		//this.url = this.urlStr + '2016-02-03';
 		//setTimeout(this.trigger('reset'), 10, this)
 		var self = this;
@@ -27,9 +31,11 @@ var FoodList = Backbone.Firebase.Collection.extend({
 
 	getDifferentDay: function(model, newStr) {
 		//this.url = this.urlStr + newStr;
+		console.log('DISASTER');
 		console.log(this.url);
 
-		app.foodList = new FoodList();
+
+		//app.foodList = new FoodList();
 		//this.fetch({reset: true});new Firebase
 	},
 

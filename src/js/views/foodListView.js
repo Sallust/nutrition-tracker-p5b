@@ -1,3 +1,4 @@
+'use strict'
 //js/views/foodListView.js
 
 //This is the box that will house the actual food items
@@ -63,6 +64,13 @@ app.FoodListView = Backbone.View.extend({
 		//TODO better separation of views; it's getting sloppy
 	},
 	updateListeners:function() {
+		//console.log(delete app.foodList)
+		delete app.foodList
+		//console.log(app.foodList.url)
+		//console.log(delete app.foodList)
+
+		app.foodList = new FoodList();
+
 		console.log("UPDATED")
 		this.listenTo(app.foodList, 'add', this.addFood);
 		this.listenTo(app.foodList, 'reset', this.addAllFood);

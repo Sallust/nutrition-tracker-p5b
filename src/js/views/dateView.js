@@ -37,7 +37,6 @@ app.DateView = Backbone.View.extend({
 
 		this.$el.html( this.template( this.model.attributes) ) //the html of this element is the template which is passed the attibutes to change placeholders
 
-		console.log('RENDER RUN')
 		//hmm no , we need to keep track of what date we're looking at
 
 	},
