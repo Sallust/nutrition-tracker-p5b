@@ -32,10 +32,6 @@ var FoodList = Backbone.Firebase.Collection.extend({
 		app.foodList = new FoodList();
 		//this.fetch({reset: true});new Firebase
 	},
-	fetchDifferentDay: function( date ) {
-		this.url = this.urlStr + date
-	},
-
 
 /*
 	date: function () {

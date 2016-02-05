@@ -14,11 +14,14 @@ app.DateView = Backbone.View.extend({
 	template: _.template($('#date-template').html() ),
 
 	events: {
-		'click #left-btn': 'goToYesterday'
+		'click #left-btn': 'goToYesterday',
+		'click #right-btn': 'goToTmrw'
 		//click left, click right
 	},
 
 	initialize: function() {
+		this.listenTo(this.model, 'all', this.render);
+		this.render();
 		//this.dateInFocus = new Date(Date.now());
 	//	this.dayBefore = this.currentDate.setDate(this.currentDate.getDate() - 1);
 	//	this.dayAfter = this.currentDate.setDate(this.currentDate.getDate() + 1);
@@ -32,21 +35,19 @@ app.DateView = Backbone.View.extend({
 		//var yesterday = date.setDate(date.getDate() - 1);
 		//var tmrw = date.setDate(date.getDate() + 1);
 
+		this.$el.html( this.template( this.model.attributes) ) //the html of this element is the template which is passed the attibutes to change placeholders
 
-		//this.$el.html( this.template({
-//
-		//}))
+		console.log('RENDER RUN')
 		//hmm no , we need to keep track of what date we're looking at
 
 	},
 	goToYesterday: function() {
 		console.log('everything I own in a box to the left');
-		app.dateModel.setRelativeDay(-1);
-		//app.foodList = new FoodList();
-		//app.foodList.fetchDifferentDay( )
+		this.model.setRelativeDay(-1);
+
 	},
 	goToTmrw: function() {
-
+		this.model.setRelativeDay(1);
 	}
 
 })

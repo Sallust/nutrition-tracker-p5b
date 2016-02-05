@@ -35,7 +35,7 @@ app.FoodListView = Backbone.View.extend({
 		//for now this is the mother view so totals gets initialized here
 		app.totalsView = new app.TotalsView();
 		app.sidebarView = new app.SidebarView();
-		app.dateView = new app.DateView();
+		app.dateView = new app.DateView({model: app.dateModel});
 
 	},
 	render: function() {

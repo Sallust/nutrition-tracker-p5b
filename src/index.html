@@ -116,9 +116,7 @@
                 <h1>Food App</h1>
             </header>
             <section id="date">
-                <button id="left-btn">〈</button>
-                <h3 class="inline">Today</h3>
-                <button id="right-btn">〉</button>
+
             </section>
             <section id="food-main">
                 <div class="food-list-header">
@@ -199,6 +197,11 @@
     </script>
 
     <script type="text/template" id="date-template">
+        <span class="flanking-date"><%= yesterdayDateStr %></span>
+        <button id="left-btn">〈</button>
+        <h3 class="date-in-focus inline"><%= todayInFocus ? 'Today' : focalDateStr %></h3>
+        <button id="right-btn">〉</button>
+        <span class="flanking-date"><%= tmrwDateStr %></span>
 
 
     </script>
