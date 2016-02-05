@@ -36,14 +36,10 @@ app.Food = Backbone.Model.extend({
 				cholest: attrs.fields.nf_cholesterol,
 				//image: new app.ImageModel({name: attrs.fields.item_name})
 			});
-			var newImage = new app.ImageModel({name: attrs.fields.item_name})
-
-			this.listenTo(newImage, 'change:url', this.setImage)
-
-			//this.setImage({name: attrs.fields.item_name})
-
-
-
+			if (this.get('imageUrl') === 'http://lorempixel.com/50/50/food') { //if flickr photo has not been saved
+				var newImage = new app.ImageModel({name: attrs.fields.item_name})
+				this.listenTo(newImage, 'change:url', this.setImage)
+			}
 		} catch (e) {
 			console.log(e)
 		}
