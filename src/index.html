@@ -130,6 +130,7 @@
             <section id="totals-view">
 
             </section>
+            <svg id="line-graph" width="1000" height="500"></svg>
 
         </section>
 
@@ -178,10 +179,10 @@
             Calories: <%= calorieTotal %>
           </li>
           <li>
-            Fats:
+            Fats:<%= fatTotal %>
           </li>
           <li>
-            Protein:
+            Protein:<%= proteinTotal %>
           </li>
         </ul>
     </script>
@@ -218,6 +219,7 @@
     <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
     <!-- BackboneFire -->
     <script src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
     <script src="js/lib/jquery-ui.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
@@ -250,6 +252,8 @@
     <script src="js/views/searchItemView.js"></script>
     <script src="js/views/sidebarView.js"></script>
     <script src="js/views/foodListView.js"></script>
+
+    <script src="js/d3/makeLineChart.js"></script>
 
 
     <script src="js/foodApp.js"></script>

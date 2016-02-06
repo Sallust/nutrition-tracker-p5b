@@ -18,7 +18,9 @@ app.TotalsView = Backbone.View.extend({
 	},
 	render: function() {
 		this.$el.html(this.template({
-			calorieTotal: this.model.get('cal')
+			calorieTotal: this.model.get('cal'),
+			fatTotal: this.model.get('fat'),
+			proteinTotal: this.model.get('prot'),
 		}))
 		console.log('I have noticed a change');
 	}
