@@ -25,13 +25,19 @@ function makeLineChart(array) {
 
 	var graph = d3.select('#line-graph');
 
-	var xRange = d3.scale.linear().range([margins.left, width - margins.right]).domain([0,app.totals.length]);
+	var xRange = d3.scale.linear().range([margins.left, width - margins.right]).domain([0,array.length]);
 	var yRange = d3.scale.linear().range([height - margins.top, margins.bottom]).domain([ymin, ymax]);
+
+	var xLabels = function(d) {
+		console.log(d);
+		return array[d] ? array[d].x : '';
+	}
 
 	var xAxis = d3.svg.axis()
 		.scale(xRange)
 		.tickSize(2)
-		.tickSubdivide(true);
+		.tickSubdivide(true)
+		.tickFormat(xLabels);
 	var yAxis = d3.svg.axis()
 		.scale(yRange)
 		.tickSize(10) //this is how far the axis labels are from axis
