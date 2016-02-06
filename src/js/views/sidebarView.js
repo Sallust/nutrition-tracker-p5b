@@ -24,13 +24,8 @@ app.SidebarView = Backbone.View.extend({
 		'click #search': 'startSearch',
 		'keypress #autocomplete': 'onEnter',
 		'click #close': 'close',
+		'keyup #autocomplete': 'fetchAutocomplete' //keyup allows input to include thekey
 
-		//important events!!
-		//addition of new food item
-
-		//hit search button
-
-		//movement? or maybe that's handled in side file
 	},
 
 	initialize: function() {
@@ -42,6 +37,16 @@ app.SidebarView = Backbone.View.extend({
 
 		this.listenTo(app.masterList, 'add', this.addFavorite);
 		this.listenTo(app.masterList, 'reset', this.addAllFavorites);
+
+		this.fetchAutocomplete = _.debounce(this.fetchAutocomplete, 2000); //throttles request for autocomplete
+		this.listenTo(app.autocompleteResults, 'sync', this.displayAutocomplete);
+
+		$("#autocomplete").autocomplete({
+	  		source: app.autocompleteResults.getSimpleArray(),
+	  		select: function( event, ui) {
+	  			this.startSearch();     // (ui.item.label);
+	  		}
+		});
 
 		//this.renderFavorites();
 	},
@@ -85,11 +90,25 @@ app.SidebarView = Backbone.View.extend({
 		}, this)//context
 	},
 
-	addFoodModel: function() {
+	// IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS
+	fetchAutocomplete:function(e) {
+		console.log(e);
+		console.log(e.keyCode);
+		var input = this.$input.val().trim().replace(/ /g, '%20');
+		console.log(input);
+		//if (input) {
+			app.autocompleteResults.getResults(input)
+			console.log('fetching autocomplete');
+
+
+		//}
+
 
 	},
-	addFoodView: function() {
-
+	displayAutocomplete: function() {
+		console.log('We are synched!');
+		$('#autocomplete').autocomplete('option', 'source', app.autocompleteResults.getSimpleArray() )
+		console.log(app.autocompleteResults.getSimpleArray());
 	},
 	startSearch: function () {
 		var searchTerm = this.$input.val().trim().replace(/ /g, '%20'); //makes search term pretty and ready to make ajax request
