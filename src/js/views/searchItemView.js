@@ -43,7 +43,8 @@ app.SearchItemView = Backbone.View.extend({
 
 	addThisFood: function () {
 		app.foodList.create ( this.model.attributes ); //I think create is causing weird errors
-		//app.sidebarView.close(); //close side window this.model
+		//app.sidebarView.trigger('foodHasBeenAdded')//app.sidebarView.close(); //close side window this.model
+		app.sidebarView.close();
 	},
 	makeFavorite: function() {
 		this.model.set('favorited', true);

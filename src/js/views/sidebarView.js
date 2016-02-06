@@ -23,7 +23,7 @@ app.SidebarView = Backbone.View.extend({
 	events: {
 		'click #search': 'startSearch',
 		'keypress #autocomplete': 'onEnter',
-		'click #close': 'close'
+		'click #close': 'close',
 
 		//important events!!
 		//addition of new food item
@@ -39,7 +39,6 @@ app.SidebarView = Backbone.View.extend({
 		this.$favorites = this.$('#favorites-ul');
 
 		this.listenTo(app.searchResults, 'reset', this.showSearch); //reset triggered by fetching data
-		this.listenTo(app.foodList, 'add', this.close);  //when an item has been added to food list (i.e. user has selected a search item or favorite item), close
 
 		this.listenTo(app.masterList, 'add', this.addFavorite);
 		this.listenTo(app.masterList, 'reset', this.addAllFavorites);
