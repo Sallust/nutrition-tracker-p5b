@@ -1,4 +1,4 @@
-function makeLineChart(param1, param2) {
+function makeLineChart(array) {
 
 
 
@@ -48,9 +48,27 @@ function makeLineChart(param1, param2) {
 		.attr('transform', 'translate('+ (margins.left) + ',0)')
 		.call(yAxis);
 
+	var lineFunc = d3.svg.line()
+		.x(function(d, i){
+
+			console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + xRange(i) + ' using our xScale.');
+
+			return xRange(i)
+		})
+		.y(function(d){
+			console.log('Plotting Y value for data point: ' + d + ' to be at: ' + yRange(d) + " using our yScale.");
+			return yRange(d.y)
+		})
+		.interpolate('linear');
+
+	graph.append('svg:path')
+		.attr('d', lineFunc(array))
+		.attr('stroke', 'blue')
+		.attr('stroke-width', 2)
+		.attr('fill', 'none');
+
 
 
 
 
 }
-makeLineChart(1,2);
