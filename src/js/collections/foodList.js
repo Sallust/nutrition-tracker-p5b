@@ -25,7 +25,7 @@ var FoodList = Backbone.Firebase.Collection.extend({
 		//setTimeout(this.trigger('reset'), 10, this)
 		var self = this;
 		setTimeout( function(self) { //Just enough time to wait for listeners to be updated to new instance of Foodlist
-			self.trigger('reset')
+			self.trigger('new')
 		},10, self);
 	},
 

@@ -34,7 +34,7 @@ app.FoodListView = Backbone.View.extend({
 
 
 		//for now this is the mother view so totals gets initialized here
-		app.totalsView = new app.TotalsView();
+		app.totalsView = new app.TotalsView({model: app.currentTotals});
 		app.sidebarView = new app.SidebarView();
 		app.dateView = new app.DateView({model: app.dateModel});
 
@@ -73,7 +73,9 @@ app.FoodListView = Backbone.View.extend({
 
 		console.log("UPDATED")
 		this.listenTo(app.foodList, 'add', this.addFood);
-		this.listenTo(app.foodList, 'reset', this.addAllFood);
+		this.listenTo(app.foodList, 'new', this.addAllFood);
+
+		app.currentTotals.updateListeners();
 	}
 
 

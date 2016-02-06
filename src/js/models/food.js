@@ -10,12 +10,12 @@ app.Food = Backbone.Model.extend({
 	defaults: {
 		foodName: 'Sample Food',
 		calories: 200,
-		protein: 4,
+		prot: 4,
 		fat: 2,
 		carb: 45,
-		fiber: 0,
-		sugar: 2,
-		cholest: 0,
+		fib: 0,
+		sug: 2,
+		chol: 0,
 		added: false,
 		favorited: false,
 		imageUrl: 'http://lorempixel.com/50/50/food'
@@ -28,12 +28,12 @@ app.Food = Backbone.Model.extend({
 			this.set({
 				foodName: attrs.fields.item_name,
 				calories: attrs.fields.nf_calories,
-				protein: attrs.fields.nf_protein,
+				prot: attrs.fields.nf_protein,
 				fat: attrs.fields.nf_total_fat,
 				carb: attrs.fields.nf_total_carbohydrate,
-				fiber: attrs.fields.nf_dietary_fiber,
-				sugar: attrs.fields.nf_sugars,
-				cholest: attrs.fields.nf_cholesterol,
+				fib: attrs.fields.nf_dietary_fiber,
+				sug: attrs.fields.nf_sugars,
+				chol: attrs.fields.nf_cholesterol,
 				//image: new app.ImageModel({name: attrs.fields.item_name})
 			});
 			if (this.get('imageUrl') === 'http://lorempixel.com/50/50/food') { //if flickr photo has not been saved
