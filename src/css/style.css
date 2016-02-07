@@ -326,7 +326,72 @@ hr {
 	font-size: 14px;
 }
 
+/* HEADER Styles */
+header {
 
+	font-size: 50px;
+	text-decoration: none;
+	color: #37474F;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+		0 1px 1px rgba(0, 0, 0, .25);
+}
+.cheesy-trophy {
+	margin:  0 2vw 0 3vw;
+
+}
+h1 {
+
+	display: inline;
+}
+
+/* DATEVIEW Styles */
+#date {
+	text-align: center;
+	font-size: 30px;
+	vertical-align: center;
+	line-height: 50px;
+
+}
+
+.date-div {
+	margin: 0 auto;
+}
+.flanking-date {
+	font-size: 0.6em;
+	vertical-align: 3px;
+	margin: 0 10px;
+	transition: all 0.2s ease;
+
+
+}
+.flanking-date:hover {
+	cursor: pointer;
+	color:#FFC400;
+	font-weight: bold;
+	font-size: 0.65em;
+
+
+}
+
+.date-in-focus {
+	margin: 0 3%;
+}
+
+#left-btn,
+#right-btn {
+color: #FFC400;
+	font-weight: bold;
+	border: 0;
+	background: none;
+	font-size: 30px;
+	transition: all .2s ease-in-out;
+
+}
+
+#left-btn:hover,
+#right-btn:hover {
+	transform: scale(1.5);
+}
 
 
 /* InfoWindow Styles */
@@ -432,10 +497,14 @@ hr {
 		margin: 0 8px 0 10px;
 		width: 83%;
 	}
+	.flanking-date {
+			display: none;
+		}
 }
 
 @media screen and (max-width: 415px) {
 	.my-btn {
 		padding: 6px 8px;
 	}
+
 }

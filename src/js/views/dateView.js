@@ -15,7 +15,10 @@ app.DateView = Backbone.View.extend({
 
 	events: {
 		'click #left-btn': 'goToYesterday',
-		'click #right-btn': 'goToTmrw'
+		'click #left-d': 'goToYesterday',
+		'click #right-btn': 'goToTmrw',
+		'click #right-d': 'goToTmrw'
+
 		//click left, click right
 	},
 
