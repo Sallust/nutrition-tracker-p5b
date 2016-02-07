@@ -81,21 +81,54 @@
             <hr>
 
             <section id="date">
-
             </section>
             <hr>
-            <section id="food-main">
-                <div class="food-list-header">
-                    <h3 class="inline">Food List</h3><button class="addFood">➕</button>
-                </div>
-                <ul id="food-list"></ul>
-                <button class="addFood">Add Food</button>
+            <div class="row-1">
+                <section id="summary">
+                    <div class="section-header">
+                        <h3 class="inline">Summary</h3><button class="addFood header-btn">➕</button>
+                    </div>
+                    <div class="sum-row">
+                        <h1 class="big">1785</h1>
+                        <img src="http://lorempixel.com/200/200/food">
+                    </div>
+                    <div class="sum-row">
+                       <div class="divider"></div>
+                    </div>
+                </section>
+                <section class="totals" >
+                    <div class="section-header">
+                        <h3>Totals!!</h3>
+                    </div>
+                    <div id="totals-view">
+                    </div>
+                </section>
+            </div>
+             <div class="row-1">
+                <section id="food-main">
+                    <div class="section-header">
+                        <h3 class="inline">Food List</h3><button class="addFood header-btn">➕</button>
+                    </div>
+                    <ul id="food-list"></ul>
+                    <div>
+                        <button class="addFood text-btn">Add More Food</button>
+                    </div>
+                </section>
+                <section id="trends">
+                    <div class="section-header">
+                        <h3>Trends!!</h3>
+                    </div>
+                </section>
+            </div>
 
 
-            </section>
-            <section id="totals-view">
 
-            </section>
+
+
+
+
+
+
             <svg id="line-graph" width="1000" height="500"></svg>
 
         </section>
@@ -131,11 +164,42 @@
 
 
     <script type="text/template" id="food-template">
-        <div class="view">
-            <label><%= foodName %></label>
-            <button class="star <%= favorited ? 'favorited' : '' %>">★</button>
-            <button class="destroy">Delete</button>
-            <span>   <%= calories %> Calories </span>
+
+         <div class="row">
+            <div class="side-25">
+                <img src="<%= url %>" alt="food-image" class="food-image">
+                <button class="destroy">✖</button>
+            </div>
+            <div class="side-75">
+                <a class="search-name" href="#"><%= foodName %></a>
+
+                <button class="star <%= favorited ? 'favorited' : '' %> ">★</button>
+                <div class="info-row-top">
+                    <div class="info-item"><%= protein %></div>
+                    <div class="info-item"><%= carb %></div>
+                    <div class="info-item"><%= fat %></div>
+                    <div class="info-item hide-tog"><%= sug %></div>
+                    <div class="info-item hide-tog"><%= chol %></div>
+                    <div class="info-item hide-tog"><%= chol %></div>
+                    <div class="info-cal">
+                        <span class="search-calorie-span"><%= calories %></span>
+                    </div>
+
+
+                </div>
+                <div class="info-row-btm">
+                    <div class="info-item">Prot</div>
+                    <div class="info-item">Carb</div>
+                    <div class="info-item">Fat</div>
+                    <div class="info-item hide-tog">Sug</div>
+                    <div class="info-item hide-tog">Cho</div>
+                    <div class="info-item hide-tog">Fib</div>
+                    <div class="info-cal"> </div> <!--placeholder div so top and bottom row align -->
+
+
+
+                </div>
+            <hr>
         </div>
     </script>
 
@@ -154,7 +218,7 @@
     </script>
 
     <script type="text/template" id="search-item-template">
-        <div class="row place-entry">
+        <div class="row">
             <div class="side-25">
                 <img src="<%= url %>" alt="food-image" class="food-image">
             </div>

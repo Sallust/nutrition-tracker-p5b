@@ -138,9 +138,6 @@ body {
 	display: inline;
 }
 
-.food-entry {
-	height: 100%;
-}
 .food-image {
 	border-radius: 15px;
 	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
@@ -392,8 +389,94 @@ color: #FFC400;
 #right-btn:hover {
 	transform: scale(1.5);
 }
+/* First Row Sections */
+.row-1 {
+	display: flex;
+	flex-wrap: wrap;
+}
+#food-main {
+	min-width: 350px;
+	width: 45%;
+	margin: 8px;
+	background: #fff;
+	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
 
+ #trends,
+ .totals {
+ 	width: 50%;
+ 	margin: 8px;
+	background: #fff;
+	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+ }
+ .section-header {
+ 	background: #FFC107;
+	line-height: 16px;
+	text-indent: 30px;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+		0 1px 1px rgba(0, 0, 0, .25);
+	padding: 20px 0;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+}
 
+h3 {
+ 	display: inline;
+ }
+
+ .header-btn {
+ 	float: right;
+ 	margin: 0 5% 0 0;
+	color: #607D8B;
+	font-weight: bold;
+	border: 0;
+	background: none;
+	font-size: 30px;
+	transition: all .2s ease-in-out;
+}
+.header-btn:hover {
+	transform: scale(1.5);
+}
+
+.destroy {
+	position: absolute;
+	top: 25px;
+	right: -5px;
+	color: #CE7C7C;
+	font-weight: bold;
+	border: 0;
+	background: none;
+	font-size: 20px;
+	transition: all .2s ease-in-out;
+}
+.destroy:hover {
+	transform: scale(1.5);
+}
+.text-btn {
+	float: right;
+	margin: 0 35px 20px 0;
+	font-size: 20px;
+}
+
+#summary {
+	min-width: 350px;
+	width: 45%;
+	margin: 8px;
+	background: #fff;
+	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.sum-row {
+	display: flex;
+}
+
+.big {
+	font-size: 100px;
+}
+
+.test {
+	width: 100%;
+}
 /* InfoWindow Styles */
 
 .infowindow-image {

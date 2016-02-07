@@ -30,7 +30,21 @@ app.FoodView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html( this.template( this.model.attributes) ) //the html of this element is the template which is passed the attibutes to change placeholders
+		this.$el.html( this.template( {
+			foodName: this.model.get('foodName'),
+			calories: this.model.get('calories'),
+			url: this.model.get('imageUrl'),
+			favorited: this.model.get('favorited'),
+			protein: this.model.get('prot'),
+			carb: this.model.get('carb'),
+			fat: this.model.get('fat'),
+			sug: this.model.get('sug'),
+			chol: this.model.get('chol'),
+			fiber: this.model.get('fib')
+
+
+
+			} ) ); //the html of this element is the template which is passed the attibutes to change placeholders
 
 		return this;
 	},
