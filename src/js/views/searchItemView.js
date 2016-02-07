@@ -9,6 +9,8 @@ var app = app || {};
 app.SearchItemView = Backbone.View.extend({
 	tagName: 'li',
 
+	className: 'search-li',
+
 	template: _.template($('#search-item-template').html() ),
 
 	events: {
@@ -60,7 +62,7 @@ app.SearchItemView = Backbone.View.extend({
 	},
 	removeFavorite:function () {
 		this.model.set('favorited', false);
-		app.masterList.destroy( this.model );
+		this.model.destroy();
 	}
 
 })

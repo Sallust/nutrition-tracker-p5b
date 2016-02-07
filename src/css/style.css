@@ -132,7 +132,7 @@ body {
 	font-size: 20px;
 	transition: all .2s ease-in-out;
 }
-.star:not(.favorited):hover {
+.star:hover {
 	transform: scale(1.5);
 }
 
@@ -218,6 +218,7 @@ hr {
 .search-calorie-span {
 	position: absolute;
 	line-height: 15px;
+	font-weight: bold;
 	display: inline;
 	margin: 0 0 0 8px;
 	padding: 15px;
@@ -236,6 +237,9 @@ hr {
 .info-row-btm {
 	display: flex;
 	font-size: 0.8em;
+}
+.search-li {
+	transition: all 0.5s ease;
 }
 
 /* NavBar List Items */

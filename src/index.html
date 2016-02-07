@@ -63,29 +63,8 @@
                         <ul id="search-ul"></ul>
 
                     </div>
-                <!--ko foreach: { data: filteredPlaces, beforeRemove: slideAway, afterRender: fade }  -->
-                    <li>
-                        <div class="row place-entry">
-                            <div class="side-25">
-                                <img src="" class="img-div" alt="place image" data-bind="attr: {src: photoUrl}">
-                            </div>
-                            <div class="side-75">
-                                <a data-bind="text: name, click: $parent.setFocus" class="place-name" href="#"></a>
-                                <p data-bind="text: address"></p>
-                                <p data-bind="text: phone"> </p>
-                                <a href="#" data-bind="text: wikiURL, attr: {href: wikiURL}"></a>
 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <ul data-bind="foreach: reviewsArray, fadeIn: showReviews">
-                                <li data-bind="text: text" class="reviews"></li>
-                                <hr>
-                            </ul>
-                        </div>
                     <div class="divider"></div>
-                    </li>
-                <!-- /ko -->
             </ul>
         </div>
         <section id="todoapp">
