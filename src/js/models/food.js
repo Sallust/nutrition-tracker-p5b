@@ -27,15 +27,16 @@ app.Food = Backbone.Model.extend({
 
 			this.set({
 				foodName: attrs.fields.item_name,
-				calories: attrs.fields.nf_calories,
-				prot: attrs.fields.nf_protein,
-				fat: attrs.fields.nf_total_fat,
-				carb: attrs.fields.nf_total_carbohydrate,
-				fib: attrs.fields.nf_dietary_fiber,
-				sug: attrs.fields.nf_sugars,
-				chol: attrs.fields.nf_cholesterol,
+				calories: Math.round(attrs.fields.nf_calories),
+				prot: Math.round(attrs.fields.nf_protein),
+				fat: Math.round(attrs.fields.nf_total_fat),
+				carb: Math.round(attrs.fields.nf_total_carbohydrate),
+				fib: Math.round(attrs.fields.nf_dietary_fiber),
+				sug: Math.round(attrs.fields.nf_sugars),
+				chol: Math.round(attrs.fields.nf_cholesterol),
 				//image: new app.ImageModel({name: attrs.fields.item_name})
 			});
+
 			if (this.get('imageUrl') === 'http://lorempixel.com/50/50/food') { //if flickr photo has not been saved
 				var newImage = new app.ImageModel({name: attrs.fields.item_name})
 				this.listenTo(newImage, 'change:url', this.setImage)

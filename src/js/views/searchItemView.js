@@ -34,7 +34,15 @@ app.SearchItemView = Backbone.View.extend({
 			foodName: this.model.get('foodName'),
 			calories: this.model.get('calories'),
 			url: this.model.get('imageUrl'),
-			favorited: this.model.get('favorited')
+			favorited: this.model.get('favorited'),
+			protein: this.model.get('prot'),
+			carb: this.model.get('carb'),
+			fat: this.model.get('fat'),
+			sug: this.model.get('sug'),
+			chol: this.model.get('chol'),
+			fiber: this.model.get('fib')
+
+
 
 			} ) );
 		return this;

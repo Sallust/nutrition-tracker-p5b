@@ -186,19 +186,37 @@
     <script type="text/template" id="search-item-template">
         <div class="row place-entry">
             <div class="side-25">
-                <img src="<%= url %>" class="" alt="food-image">
+                <img src="<%= url %>" alt="food-image" class="food-image">
             </div>
             <div class="side-75">
                 <a class="search-name" href="#"><%= foodName %></a>
 
                 <button class="star <%= favorited ? 'favorited' : '' %> ">★</button>
-                <p>Cal</p>
-                <span class="search-calorie-span"><%= calories %></span>
+                <div class="info-row-top">
+                    <div class="info-item"><%= protein %></div>
+                    <div class="info-item"><%= carb %></div>
+                    <div class="info-item"><%= fat %></div>
+                    <div class="info-item hide-tog"><%= sug %></div>
+                    <div class="info-item hide-tog"><%= chol %></div>
+                    <div class="info-item hide-tog"><%= chol %></div>
+                    <div class="info-cal">
+                        <span class="search-calorie-span"><%= calories %></span>
+                    </div>
+
+
+                </div>
+                <div class="info-row-btm">
+                    <div class="info-item">Prot</div>
+                    <div class="info-item">Carb</div>
+                    <div class="info-item">Fat</div>
+                    <div class="info-item hide-tog">Sug</div>
+                    <div class="info-item hide-tog">Cho</div>
+                    <div class="info-item hide-tog">Fib</div>
+                    <div class="info-cal"> </div> <!--placeholder div so top and bottom row align -->
 
 
 
-
-            </div>
+                </div>
             <hr>
         </div>
     </script>
