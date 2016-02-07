@@ -62,10 +62,6 @@
                         <ul id="favorites-ul"></ul>
                         <ul id="search-ul"></ul>
 
-
-
-
-
                     </div>
                 <!--ko foreach: { data: filteredPlaces, beforeRemove: slideAway, afterRender: fade }  -->
                     <li>
@@ -188,14 +184,27 @@
     </script>
 
     <script type="text/template" id="search-item-template">
-        <div class="row">
-            <img src="<%= url %>" class="" alt="food-image">
-            <h3 class="search-name"><%= foodName %> </h3>
-            <button class="star <%= favorited ? 'favorited' : '' %> ">★</button>
-            <span class="search-calorie-span"><%= calories %></span>
+        <div class="row place-entry">
+            <div class="side-25">
+                <img src="<%= url %>" class="" alt="food-image">
+            </div>
+            <div class="side-75">
+                <a class="search-name" href="#"><%= foodName %></a>
+
+                <button class="star <%= favorited ? 'favorited' : '' %> ">★</button>
+                <p>Cal</p>
+                <span class="search-calorie-span"><%= calories %></span>
+
+
+
+
+            </div>
             <hr>
         </div>
     </script>
+
+
+
 
     <script type="text/template" id="date-template">
         <span class="flanking-date"><%= yesterdayDateStr %></span>

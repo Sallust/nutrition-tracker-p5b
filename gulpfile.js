@@ -10,6 +10,7 @@ var htmlmin = require('gulp-htmlmin');
 var jshint = require('gulp-jshint');
 
 var del = require('del');
+var browserSync = require("browser-sync");
 
 
 
@@ -58,4 +59,17 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['lint', 'optimize-stack', 'watch']);
+
+gulp.task('brow-sync', function() {
+	browserSync.init({
+		server:{
+			baseDir: "./src"
+		},
+		socket: {
+			domain: 'http://localhost:3000'
+		},
+		files: ['./src/index.html', './src/css/*.css']
+	});
+	//gulp.watch()
+});
 

@@ -48,6 +48,7 @@ var CurrentTotals = Backbone.Model.extend({
 			fib: fib
 		})
 	}
+
 })
 
 app.currentTotals = new CurrentTotals;

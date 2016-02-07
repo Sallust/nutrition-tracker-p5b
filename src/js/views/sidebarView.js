@@ -40,11 +40,14 @@ app.SidebarView = Backbone.View.extend({
 
 		this.fetchAutocomplete = _.debounce(this.fetchAutocomplete, 2000); //throttles request for autocomplete
 		this.listenTo(app.autocompleteResults, 'sync', this.displayAutocomplete);
+		self = this;
 
 		$("#autocomplete").autocomplete({
 	  		source: app.autocompleteResults.getSimpleArray(),
 	  		select: function( event, ui) {
-	  			this.startSearch();     // (ui.item.label);
+	  			self.$input.val(ui.item.label)
+	  			self.startSearch();
+	  			console.log(ui);   // (ui.item.label);
 	  		}
 		});
 
@@ -124,6 +127,7 @@ app.SidebarView = Backbone.View.extend({
 	},
 
 	close: function() {  //addition of anything to food list causes this
+		this.$input.val('')
 		this.$favorites.show();
 		this.$search.hide();
 		$('#wrapper').toggleClass('toggled');
