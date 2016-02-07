@@ -42,29 +42,31 @@
             </div>
         </div>
     </nav>
-    <div id="wrapper">
+    <div id="wrapper" class="toggled">
         <div id="sidebar-wrapper">
             <ul id="sidebar" class="sidebar-nav">
+                <li class="top-divider"></li>
                 <li class="sidebar-brand">
-                    <a href="#"><h3 class="sidebar-title">Add Food</h3>
+                    <h3 class="sidebar-title">Food Selection</h3>
                         <button id="close">✖</button>
 
-                    </a>
-                    <div class="divider"></div>
-                    <p class="directions">Select your favorite food or search for a new food</p>
-                </li>
-                <li>
-                    <input type="text" placeholder="Type here to Filter by Name" class="form-control my-input" id="autocomplete"><button id="search">🔍</button>
-                </li>
 
-                <li id="before-search" class="divider"></li>
+                </li>
+                 <li class="input-li">
+
+
+                    <input type="text" placeholder="Select a favorite or search for  a new food" class="form-control my-input" id="autocomplete"><button id="search">🔍</button>
+                </li>
+                <li class="divider"></li>
+                <li id="before-search">
                     <div id="search-div">
                         <ul id="favorites-ul"></ul>
+
                         <ul id="search-ul"></ul>
 
                     </div>
 
-                    <div class="divider"></div>
+                    <div class="divider"></div></li>
             </ul>
         </div>
         <section id="todoapp">
