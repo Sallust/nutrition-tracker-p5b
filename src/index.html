@@ -89,11 +89,23 @@
                         <h3 class="inline">Summary</h3><button class="addFood header-btn">➕</button>
                     </div>
                     <div class="sum-row">
-                        <h1 class="big">1785</h1>
-                        <img src="http://lorempixel.com/200/200/food">
+                        <div class="sum-col">
+                            <p class="sum-sub">Calories Consumed</p>
+
+                            <h1 class="big">1785</h1>
+                            <p class="sum-sub">Budget: 2800</p>
+                        <button class="addFood sum-btn">Add More Food</button>
+
+
+                        </div>
+
+
+
+                        <div id="donut">
+                            <div class="calorie-small"> 485</div>
+                        </div>
                     </div>
                     <div class="sum-row">
-                       <div class="divider"></div>
                     </div>
                 </section>
                 <section class="totals" >
@@ -284,6 +296,10 @@
     <script src="js/lib/jquery-ui.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
 
+    <script src="js/d3/makeLineChart.js"></script>
+    <script src="js/d3/makeDonut.js"></script>
+
+
 
     <script src="js/models/image.js"></script>
     <script src="js/models/food.js"></script>
@@ -310,9 +326,9 @@
     <script src="js/views/totalsView.js"></script>
     <script src="js/views/searchItemView.js"></script>
     <script src="js/views/sidebarView.js"></script>
-    <script src="js/views/foodListView.js"></script>
+    <script src="js/views/summaryView.js"></script>
 
-    <script src="js/d3/makeLineChart.js"></script>
+    <script src="js/views/foodListView.js"></script>
 
 
     <script src="js/foodApp.js"></script>

@@ -47,7 +47,6 @@ app.SidebarView = Backbone.View.extend({
 	  		select: function( event, ui) {
 	  			self.$input.val(ui.item.label)
 	  			self.startSearch();
-	  			console.log(ui);   // (ui.item.label);
 	  		}
 		});
 
@@ -95,18 +94,9 @@ app.SidebarView = Backbone.View.extend({
 
 	// IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS
 	fetchAutocomplete:function(e) {
-		console.log(e);
-		console.log(e.keyCode);
 		var input = this.$input.val().trim().replace(/ /g, '%20');
-		console.log(input);
-		//if (input) {
 			app.autocompleteResults.getResults(input)
 			console.log('fetching autocomplete');
-
-
-		//}
-
-
 	},
 	displayAutocomplete: function() {
 		console.log('We are synched!');
