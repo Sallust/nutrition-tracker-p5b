@@ -26,6 +26,7 @@ body {
 	padding-top: 50px;
 	padding-bottom: 20px;
 	background: #ECEFF1;
+	font-family: "Roboto", sans-serif;
 }
 
 .my-nav {
@@ -199,8 +200,7 @@ body {
 
 .search-name:hover {
 	text-decoration: none;
-	color: #fff;
-	text-shadow: 0 0 4px black;
+	color: #FFA000;
 }
 
 .search-name:active,
@@ -233,6 +233,8 @@ hr {
 
 .info-item {
 	width: 13.33%;
+	font-size:17px;
+
 
 	text-align: center;
 	border-right: 1px solid #78909c;
@@ -252,8 +254,8 @@ hr {
 	display: inline;
 	margin: 0 0 0 8px;
 	padding: 15px;
-	background: #FFC107;
-	color: #fff;
+	background: #FFD54F;
+	color: #607D8B;
 	border-radius: 25px;
 	transform: translate( 0px, 0px);
 	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
@@ -418,6 +420,7 @@ color: #FFC400;
 		0 1px 1px rgba(0, 0, 0, .25);
 	padding: 20px 0;
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+	margin: 0 0 10px 0;
 }
 
 h3 {
@@ -486,6 +489,8 @@ h3 {
 
 .big {
 	font-size: 80px;
+	font-weight: 900;
+
 }
 
 .test {
@@ -496,20 +501,73 @@ h3 {
 	margin: 0 10px 0 0;
 }
 
+.donut-text {
+	position: absolute;
+	top: 65px;
+	left: 0px;
+	text-align: center;
+	width: 200px;
+}
+
 .calorie-small {
 	font-size: 50px;
+	font-weight: 700;
+}
+
+.graph-left {
+	text-shadow: 0 0 3px #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.graph-consumed {
+text-shadow: 0 0 3px #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+/* Totals Styles */
+.totals-bar {
+	height: 10px;
 	position: absolute;
-	top: 60px;
-	left: 60px;
-
-
+	background-image: linear-gradient(to bottom, #5cb85c 0, #419641 100%);
+	margin: 0 0 5px 0;
 }
-.graph-text {
-		text-shadow: 0 0 3px #fff;
-		font-weight: bold;
-		text-transform: uppercase;
+.base-bar {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	border-radius: 3px;
+	background-color: #F3F3F3;
 
+	height: 10px;
+	width: 100%;
+	box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.35)
 }
+#shame-red {
+	background-image: linear-gradient(to bottom, #DA6D6A 0, #9A413E 100%);
+}
+
+#totals-view {
+	margin: 0 20px 0 0;
+}
+
+#success-gold {
+	background-image: linear-gradient(to bottom, #FFBF00 0, #BF9B30 100%);
+}
+
+.right-unit {
+	float: right;
+}
+/* Trends Styles */
+
+
+#trends {
+	height: 500px;
+}
+
+
+
+
 /* InfoWindow Styles */
 
 .infowindow-image {
@@ -575,6 +633,12 @@ h3 {
 	color: #fff;
 }
 
+#summary,
+	.totals,
+	#food-main,
+	#trends {
+		transition: all 0.3s ease;
+	}
 /*   Responsive Styles Radio Button bar and size of sidebar columns */
 
 
@@ -604,7 +668,7 @@ h3 {
 		display: none;
 	}
 	.info-item {
-		width: 25%
+		width: 25%;
 	}
 	.info-cal {
 		width: 30%
@@ -614,8 +678,18 @@ h3 {
 		width: 83%;
 	}
 	.flanking-date {
-			display: none;
-		}
+		display: none;
+	}
+
+	#summary,
+	.totals,
+	#food-main,
+	#trends {
+		width: 88%;
+		margin: 8px auto;
+	}
+
+
 }
 
 @media screen and (max-width: 415px) {

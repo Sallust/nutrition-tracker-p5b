@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/lib/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/lib/simple-sidebar.css">
     <link rel="stylesheet" href="css/lib/jquery-ui.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:700,500,400,900' rel='stylesheet'>
      <link rel="stylesheet" href="css/old.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -85,28 +86,9 @@
             <hr>
             <div class="row-1">
                 <section id="summary">
-                    <div class="section-header">
-                        <h3 class="inline">Summary</h3><button class="addFood header-btn">➕</button>
-                    </div>
-                    <div class="sum-row">
-                        <div class="sum-col">
-                            <p class="sum-sub">Calories Consumed</p>
-
-                            <h1 class="big">1785</h1>
-                            <p class="sum-sub">Budget: 2800</p>
-                        <button class="addFood sum-btn">Add More Food</button>
-
-
-                        </div>
 
 
 
-                        <div id="donut">
-                            <div class="calorie-small"> 485</div>
-                        </div>
-                    </div>
-                    <div class="sum-row">
-                    </div>
                 </section>
                 <section class="totals" >
                     <div class="section-header">
@@ -130,6 +112,11 @@
                     <div class="section-header">
                         <h3>Trends!!</h3>
                     </div>
+                    <div>
+                        <svg id="line-graph" width="500" height="500"></svg>
+                    </div>
+
+
                 </section>
             </div>
 
@@ -141,7 +128,7 @@
 
 
 
-            <svg id="line-graph" width="1000" height="500"></svg>
+
 
         </section>
 
@@ -217,15 +204,49 @@
 
      <script type="text/template" id="totals-template">
         <ul>
-          <li>
-            Calories: <%= calorieTotal %>
-          </li>
-          <li>
-            Fats:<%= fatTotal %>
-          </li>
-          <li>
-            Protein:<%= proteinTotal %>
-          </li>
+            <li>
+                Calories: <span class="right-unit"> <%= calTotal %> cal / <%= DRICal %>cal</span>
+            </li>
+            <li class="base-bar">
+                <div class="totals-bar" style="width: <%= calPercent %>"></div>
+            </li>
+            <li>
+                Fats: <span class="right-unit"> <%= fatTotal %>g  / <%= DRIFat %>g</span>
+            </li>
+            <li class="base-bar">
+                <div class="totals-bar" style="width: <%= fatPercent %>"></div>
+            </li>
+            <li>
+                Protein: <span class="right-unit"> <%= protTotal %>g  / <%= DRIProt %>g</span>
+            </li>
+            <li class="base-bar">
+                <div class="totals-bar" style="width: <%= protPercent %>"></div>
+            </li>
+
+            <li>
+                Carbs: <span class="right-unit"> <%= carbTotal %>g  / <%= DRICarb %>g</span>
+            </li>
+            <li class="base-bar">
+                <div class="totals-bar" style="width: <%= carbPercent %>"></div>
+            </li>
+            <li>
+                Sugar: <span class="right-unit"> <%= sugTotal %>g  / <%= DRISug %>g</span>
+            </li>
+            <li class="base-bar">
+                <div class="totals-bar" style="width: <%= sugPercent %>"></div>
+            </li>
+            <li>
+                Cholesterol: <span class="right-unit"><%= cholTotal %>mg  / <%= DRIChol %>mg</span>
+            </li>
+            <li class="base-bar">
+                <div class="totals-bar" style="width: <%= cholPercent %>"></div>
+            </li>
+            <li>
+                Fiber: <span class="right-unit"> <%= fibTotal %>g  / <%= DRIFib %>g</span>
+            </li>
+            <li class="base-bar">
+                <div class="totals-bar" style="width: <%= fibPercent %>"></div>
+            </li>
         </ul>
     </script>
 
@@ -279,7 +300,30 @@
 
     </script>
 
+    <script type="text/template" id="summary-template">
+     <div class="section-header">
+        <h3 class="inline">Summary</h3><button class="addFood header-btn">➕</button>
+    </div>
+    <div class="sum-row">
+        <div class="sum-col">
+            <p class="sum-sub">Calories Consumed</p>
 
+            <h1 class="big"><%= consumed %></h1>
+            <p class="sum-sub">Budget: <%= budget %></p>
+        <button class="addFood sum-btn">Add More Food</button>
+        </div>
+        <div id="donut">
+            <div class="donut-text">
+                <h3 class="calorie-small"> <%= left %> </h3>
+                <p> Calories <%- isOver ? 'over' : 'remaining' %></p>
+            </div>
+
+        </div>
+
+
+
+
+    </script>
 
 
     <script src="js/lib/jquery-2.2.0.min.js"></script>
@@ -306,6 +350,7 @@
     <script src="js/models/date.js"></script>
     <script src="js/models/plotPoint.js"></script>
     <script src="js/models/name.js"></script>
+    <script src="js/models/userInfo.js"></script>
 
 
 
