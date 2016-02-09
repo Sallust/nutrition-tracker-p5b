@@ -98,7 +98,7 @@
                     </div>
                 </section>
             </div>
-             <div class="row-1">
+             <div class="row-2">
                 <section id="food-main">
                     <div class="section-header">
                         <h3 class="inline">Food List</h3><button class="addFood header-btn">➕</button>
@@ -112,8 +112,7 @@
                     <div class="section-header">
                         <h3>Trends!!</h3>
                     </div>
-                    <div>
-                        <svg id="line-graph" width="500" height="500"></svg>
+                    <div id="trends-view">
                     </div>
 
 
@@ -319,10 +318,12 @@
             </div>
 
         </div>
+    </script>
 
+    <script type="text/template" id="trends-template">
 
-
-
+            <svg id="line-graph" class="<%= className %>"width="600" height="380"></svg>
+            <hr>
     </script>
 
 
@@ -370,6 +371,7 @@
     <script src="js/views/dateView.js"></script>
     <script src="js/views/totalsView.js"></script>
     <script src="js/views/searchItemView.js"></script>
+    <script src="js/views/trendsView.js"></script>
     <script src="js/views/sidebarView.js"></script>
     <script src="js/views/summaryView.js"></script>
 

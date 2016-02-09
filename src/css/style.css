@@ -396,6 +396,12 @@ color: #FFC400;
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.row-2 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
 #food-main {
 	min-width: 350px;
 	width: 45%;
@@ -476,6 +482,7 @@ h3 {
 
 .sum-col {
 	margin: auto;
+	text-align: center;
 }
 .sum-sub {
 	font-size: 20px;
@@ -525,6 +532,7 @@ text-shadow: 0 0 3px #fff;
 	font-weight: bold;
 	text-transform: uppercase;
 }
+
 /* Totals Styles */
 .totals-bar {
 	height: 10px;
@@ -562,11 +570,18 @@ text-shadow: 0 0 3px #fff;
 
 
 #trends {
-	height: 500px;
+	overflow: hidden;
 }
 
-
-
+.graph-title {
+	font-size: 30px;
+}
+#line-graph {
+	margin: auto;
+	display:block;
+	transform: scale(0.8);
+	transform-origin: top left;
+}
 
 /* InfoWindow Styles */
 
@@ -702,6 +717,15 @@ text-shadow: 0 0 3px #fff;
 	#food-main,
 	#trends {
 		width: 98%;
+	}
+
+	#line-graph {
+		transform: scale(0.8) translateX(-50px);
+		transform-origin: top left;
+	}
+	.x-axis,
+	.y-axis {
+		display: none;
 	}
 
 

@@ -37,6 +37,7 @@ app.FoodListView = Backbone.View.extend({
 		app.totalsView = new app.TotalsView({model: app.currentTotals});
 		app.sidebarView = new app.SidebarView();
 		app.dateView = new app.DateView({model: app.dateModel});
+		app.trendsView = new app.TrendsView({collection: app.totals});
 
 	},
 	render: function() {

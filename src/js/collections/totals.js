@@ -7,7 +7,8 @@ var Totals = Backbone.Firebase.Collection.extend({
 	url:'https://my-nutrition-tracker.firebaseio.com/totals',
 
 	initialize: function() {
-		this.listenTo(app.currentTotals, 'change', this.addValue)
+		this.listenTo(app.currentTotals, 'change', this.addValue);
+		console.log('Totals INITIALIZED')
 	},
 
 	addValue: function( totals ) {
@@ -15,7 +16,10 @@ var Totals = Backbone.Firebase.Collection.extend({
 		this.add({
 			id: app.dateModel.get('todayFileStr'),
 			x: app.dateModel.get('todayFileStr'),
-			y: totals.get('cal')
+			y: totals.get('cal'),
+			carb: totals.get('carb'),
+			prot: totals.get('prot'),
+			fat: totals.get('fat')
 		},{merge: true})
 
 	},
