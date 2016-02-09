@@ -1,5 +1,5 @@
 //js/views/trendsView.js
-console.log("I'm a trendy View")
+
 
 var app = app || {};
 
@@ -13,6 +13,10 @@ app.TrendsView = Backbone.View.extend({
 		this.$input = this.$('#new-todo');
 		this.listenTo(this.collection, 'sync', this.render)
 
+		this.charts = ['Total Calories', 'Protein', 'Fats', 'Carbs'];
+		this.myKeys = ['cal','prot','fat','carb'];
+
+
 
 	},
 
@@ -22,28 +26,15 @@ app.TrendsView = Backbone.View.extend({
 			this.$el.hide() //don't show this section when there is no trends data (i.e first day)
 		} else {
 			this.$el.show()
-			this.$charts.append(this.template({className:'graph-1'}))
-			makeLineChart(this.collection.toJSON(), 'Total Calories', 600, 300, 'y', '.graph-1');
-			this.$charts.append(this.template({className:'graph-2'}))
-			makeLineChart(this.collection.toJSON(), 'Protein', 600, 300, 'prot', '.graph-2');
-
+			for (var i = 0; i < this.charts.length; i++) {
+				var graphOrder = 'graph-' + (i+1);
+				console.log(graphOrder)
+				var DRIName = 'DRI' + this.myKeys[i];
+				console.log(app.userInfo.get(DRIName));
+				this.$charts.append(this.template({className: graphOrder}));
+				makeLineChart(this.collection.toJSON(), this.charts[i], 600, 200, this.myKeys[i], '.' + graphOrder, app.userInfo.get(DRIName))
+			};
 		}
-
-
-
-		//this.$charts.html(this.template({
-
-
-
-
-		//}))
-
-
-
-
 	}
-
-
-
 })
 

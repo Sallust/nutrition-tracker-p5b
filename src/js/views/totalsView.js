@@ -13,14 +13,13 @@ app.TotalsView = Backbone.View.extend({
 
 	initialize: function() {
 		this.listenTo(this.model, 'change', this.render);
-		this.DRICal = app.userInfo.get('DRICal') ; //saving local references for faster calc
-		this.DRIFat = app.userInfo.get('DRIFat');
-		this.DRIProt = app.userInfo.get('DRIProt');
-		this.DRICarb = app.userInfo.get('DRICarb');
-		this.DRISug = app.userInfo.get('DRISug');
-		this.DRIChol = app.userInfo.get('DRIChol');
-		this.DRIFib = app.userInfo.get('DRIFib');
-
+		this.DRICal = app.userInfo.get('DRIcal') ; //saving local references for faster calc
+		this.DRIFat = app.userInfo.get('DRIfat');
+		this.DRIProt = app.userInfo.get('DRIprot');
+		this.DRICarb = app.userInfo.get('DRIcarb');
+		this.DRISug = app.userInfo.get('DRIsug');
+		this.DRIChol = app.userInfo.get('DRIchol');
+		this.DRIFib = app.userInfo.get('DRIfib');
 
 		this.render();
 	},
@@ -32,8 +31,6 @@ app.TotalsView = Backbone.View.extend({
 		var sugPercent = this.model.get('sug')/this.DRISug * 100;
 		var cholPercent = this.model.get('chol')/this.DRIChol * 100;
 		var fibPercent = this.model.get('fib')/this.DRIFib * 100;
-
-
 
 		this.$el.html(this.template({
 			calTotal: this.model.get('cal'),
@@ -59,6 +56,6 @@ app.TotalsView = Backbone.View.extend({
 			DRIFib: this.DRIFib
 
 		}))
-		console.log('I have noticed a change');
+
 	}
 })
