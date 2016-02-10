@@ -5,7 +5,6 @@ var app = app || {};
 * @description Rather than make calls to new collection, would have written filter methods
 * @description and used queries
 * @constructor
-* @param none - only one instance
 */
 
 var FoodList = Backbone.Firebase.Collection.extend({
@@ -25,6 +24,14 @@ var FoodList = Backbone.Firebase.Collection.extend({
 		setTimeout( function(self) { //Just enough time to wait for listeners to be updated to new instance of Foodlist
 			self.trigger('new');
 		},10, self);
+
+		//Error Handling
+		var foodTimeout = setTimeout(function() {
+			alert("No food for you! There's been an error syncing your food data. Try again in a bit")
+		},8000)
+		this.on('sync', function() {
+			clearTimeout(foodTimeout)
+		})
 	}
 });
 

@@ -18,6 +18,14 @@ var MasterList = Backbone.Firebase.Collection.extend({
 		return this.filter( function ( food ) {
 			return food.get('favorited');
 		});
+	},
+	initialize: function() {
+		var masterTimeout = wikiRequestTimeout = setTimeout(function() {
+			alert('Error getting your favorites. Try again later please!')
+	    }, 5000);
+	    this.on('sync', function() {
+	    	clearTimeout(masterTimeout)
+	    })
 	}
 });
 

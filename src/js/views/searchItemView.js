@@ -31,9 +31,10 @@ app.SearchItemView = Backbone.View.extend({
 	/**
 	* @description Create/save new food model in foodList by passing attributes from search food
 	* @description Closes parent side window
+	* @description omit allows duplicate model; in long run, I'd refactor methods to keep track of how many times its in the collection
 	*/
 	addThisFood: function () {
-		app.foodList.create ( this.model.attributes );
+		app.foodList.create ( _.omit(this.model.attributes, 'id') );
 		app.sidebarView.close();
 	},
 	makeFavorite: function() {

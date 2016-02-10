@@ -38,7 +38,7 @@ app.Food = Backbone.Model.extend({
 				carb: Math.round(attrs.fields.nf_total_carbohydrate) || 0,
 				fib: Math.round(attrs.fields.nf_dietary_fiber) || 0,
 				sug: Math.round(attrs.fields.nf_sugars) || 0,
-				chol: Math.round(attrs.fields.nf_cholesterol) || 0,
+				chol: Math.round(attrs.fields.nf_cholesterol) || 0
 			});
 			if (this.get('imageUrl') === 'http://lorempixel.com/75/75/food') { //if flickr photo has not been saved
 				var newImage = new app.ImageModel({name: attrs.fields.item_name});
