@@ -1,12 +1,13 @@
 var app = app || {};
 
-
-//I'm the food model, I'm the data surrounding one added food
-
+/**
+* @description Holds nutrient data related to one particular food
+* @constructor
+* @param attr -  gets passed attributes from search or from other food method
+*/
 console.log ('Hi from the food model');
 
 app.Food = Backbone.Model.extend({
-	//default food properties
 	defaults: {
 		foodName: 'Sample Food',
 		calories: 200,
@@ -18,25 +19,26 @@ app.Food = Backbone.Model.extend({
 		chol: 0,
 		added: false,
 		favorited: false,
-		imageUrl: 'http://lorempixel.com/50/50/food'
+		imageUrl: 'http://lorempixel.com/50/50/food' //random picture of food as placeholder unil flickr url arrives
 	},
-
+	/**
+	* @description Instantiates a food method from search data
+	* @description  If needed, creates a new image model to which it immediately subcribes
+	* @param attr -  gets passed attributes from search or from other food method
+	*/
 	initialize: function( attrs ) {
 		try {
 			//Test for correct values
-
 			this.set({
 				foodName: attrs.fields.item_name,
 				calories: Math.round(attrs.fields.nf_calories),
-				prot: Math.round(attrs.fields.nf_protein),
-				fat: Math.round(attrs.fields.nf_total_fat),
-				carb: Math.round(attrs.fields.nf_total_carbohydrate),
-				fib: Math.round(attrs.fields.nf_dietary_fiber),
-				sug: Math.round(attrs.fields.nf_sugars),
-				chol: Math.round(attrs.fields.nf_cholesterol),
-				//image: new app.ImageModel({name: attrs.fields.item_name})
+				prot: Math.round(attrs.fields.nf_protein) || 0, //using Math.round cancels out some backbone sugar, use || so no NaN results
+				fat: Math.round(attrs.fields.nf_total_fat) || 0,
+				carb: Math.round(attrs.fields.nf_total_carbohydrate) || 0,
+				fib: Math.round(attrs.fields.nf_dietary_fiber) || 0,
+				sug: Math.round(attrs.fields.nf_sugars) || 0,
+				chol: Math.round(attrs.fields.nf_cholesterol) || 0,
 			});
-
 			if (this.get('imageUrl') === 'http://lorempixel.com/50/50/food') { //if flickr photo has not been saved
 				var newImage = new app.ImageModel({name: attrs.fields.item_name})
 				this.listenTo(newImage, 'change:url', this.setImage)
@@ -50,13 +52,12 @@ app.Food = Backbone.Model.extend({
 			favorited: !this.get('favorited')
 		})
 	},
+	/**
+	* @description On arrival of image data, changes food Url
+	* @param {model} model -  the image model
+	* @param {string} url - the url from the image model, directly passed by using the change:url listener
+	*/
 	setImage: function( model, url) {
 		this.set('imageUrl', url);
-		console.log(url);
-		//var newImage = new app.ImageModel(obj)
 	}
-
-	//TODO What additional logic should live here?
-	//Will user be changing data somehow?
-
 });

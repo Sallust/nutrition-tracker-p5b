@@ -25,7 +25,7 @@ app.FoodView = Backbone.View.extend({
 
 	initialize: function() {
 		//what should the view of the individual food listen to?
-		this.listenTo(this.model, 'destroy', this.remove);
+		this.listenTo(this.model, 'destroy', this.disappear);
 		this.listenTo(this.model, 'change:favorited', this.render);
 	},
 
@@ -58,6 +58,12 @@ app.FoodView = Backbone.View.extend({
 	},
 	clear: function() {
 		this.model.destroy();
+	},
+	disappear: function() {
+		console.log('abracadabra')
+		this.$el.fadeOut(400,'swing', function() {
+			this.remove();
+		} );
 	}
 
 
