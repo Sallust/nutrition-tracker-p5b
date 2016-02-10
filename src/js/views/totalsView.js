@@ -10,8 +10,11 @@ app.TotalsView = Backbone.View.extend({
 	el:'#totals-view',
 
 	template: _.template($('#totals-template').html() ),
+	liTemplate: _.template($('#totals-li-template').html() ),
 
 	initialize: function() {
+		this.$ul= this.$('#totals-ul');
+
 		this.listenTo(this.model, 'change', this.render);
 		this.DRICal = app.userInfo.get('DRIcal') ; //saving local references for faster calc
 		this.DRIFat = app.userInfo.get('DRIfat');
@@ -20,10 +23,13 @@ app.TotalsView = Backbone.View.extend({
 		this.DRISug = app.userInfo.get('DRIsug');
 		this.DRIChol = app.userInfo.get('DRIchol');
 		this.DRIFib = app.userInfo.get('DRIfib');
-
+		this.DRIArray = app.userInfo.get('DRI');
+		this.keysArray = ['cal', 'fat', 'prot', 'carb', 'sug', 'chol', 'fib']
 		this.render();
 	},
 	render: function() {
+		this.$ul.html('');
+
 		var calPercent = this.model.get('cal')/this.DRICal * 100;
 		var fatPercent = this.model.get('fat')/this.DRIFat * 100;
 		var protPercent = this.model.get('prot')/this.DRIProt * 100;
@@ -32,30 +38,27 @@ app.TotalsView = Backbone.View.extend({
 		var cholPercent = this.model.get('chol')/this.DRIChol * 100;
 		var fibPercent = this.model.get('fib')/this.DRIFib * 100;
 
-		this.$el.html(this.template({
-			calTotal: this.model.get('cal'),
-			fatTotal: this.model.get('fat'),
-			protTotal: this.model.get('prot'),
-			carbTotal: this.model.get('carb'),
-			sugTotal: this.model.get('sug'),
-			cholTotal:this.model.get('chol'),
-			fibTotal: this.model.get('fib'),
-			calPercent: calPercent < 100 ? calPercent + '%' : '100%" id="shame-red',
-			fatPercent: fatPercent < 100 ? fatPercent + '%' : '100%" id="shame-red',
-			protPercent: protPercent < 100 ? protPercent + '%' : '100%" id="success-gold',
-			carbPercent: carbPercent < 100 ? carbPercent + '%' : '100%" id="shame-red',
-			sugPercent: sugPercent < 100 ? sugPercent + '%' : '100%" id="shame-red',
-			cholPercent: cholPercent < 100 ? cholPercent + '%' : '100%" id="shame-red',
-			fibPercent: fibPercent < 100 ? fibPercent + '%' : '100%" id="success-gold',
-			DRICal: this.DRICal,
-			DRIFat: this.DRIFat,
-			DRIProt: this.DRIProt,
-			DRICarb: this.DRICarb,
-			DRISug: this.DRISug,
-			DRIChol: this.DRIChol,
-			DRIFib: this.DRIFib
 
-		}))
+
+		for (var i = 0; i < this.DRIArray.length; i++) {
+			var key = this.keysArray[i];
+			var element = this.DRIArray[i];
+			var percent = this.model.returnPercent(key)
+			var onOverClass = (key === 'prot' || key === 'fib') ? 'success-gold' : 'shame-red'; // when user hits protein or fiber goal, bar is red, for all others bar turns nasty red
+			var percentString = percent < 100 ? percent + '%' : '100%" id="'+ onOverClass;
+			this.$ul.append(this.liTemplate({
+				name: element.name+ 'WOW',
+				total: this.model.get(key),
+				unit: element.unit,
+				DRI: element.DRI,
+				percent: percentString
+			}))
+
+
+
+		};
+//$('.totals-bar').attr('style', 'width: 5px');
+//$('.totals-bar').attr('style', 'width: 500px');
 
 	}
 })
