@@ -1,22 +1,23 @@
-var testData = {
-	calories:[1,8]
-};
-
-
+/**
+* @description Creates donut bar chart representing percent of calories consumed
+* @param {number} left - number of calories remaining
+* @param {number} consumed - number of calories consumed
+* @param {string} divID - where graph will be attached
+* @param {array} colorArray- an array of 2 colors, allows for over 100% representation
+*/
 
 function makeDonut(left, consumed, divID, colorArray) {
 
 	var myData =  {
 		calories:[left, consumed]
 	};
-	//initial code below is from d3 example. I made it modifiable by a function so it can be easily reused with different data
 	var width = 200,    //set dimensions
 	    height = 200,
 	    radius = Math.min(width, height) / 2;
 
-	var classes = ['graph-left', 'graph-consumed'];
+	var classes = ['graph-left', 'graph-consumed'];//for category titles
 
-	var color = d3.scale.ordinal()			//set colors grao match palette
+	var color = d3.scale.ordinal()
 	    .range(colorArray); //grey, orange
 
 	var arc = d3.svg.arc()
@@ -25,7 +26,7 @@ function makeDonut(left, consumed, divID, colorArray) {
 
 	var pie = d3.layout.pie()
 	    .sort(null)
-	    //.value(function(d) { return d.level; });
+
 	var labels = [ "left","consumed"]
 
 	var svg = d3.select(divID).append("svg")  //now appends chart to divID set in function
@@ -34,32 +35,20 @@ function makeDonut(left, consumed, divID, colorArray) {
 	 	.append("g")
 	    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-	 //now gets data csv in url set in function.
-
-	  //data.forEach(function(d) {
-	    //d.level = +d.level;              //level is set in function so can later be set to match at different csv with different variables
-	 // });
-
-	 var g = svg.selectAll(".arc")
+	var g = svg.selectAll(".arc")
 	    .data(pie(myData.calories))
 	    .enter().append("g")
 	    .attr("class", "arc");
 
-	  g.append("path")
-	      .attr("d", arc)
-	      .style("fill", function(d,i) { return color(i); });
+	g.append("path")
+	   	.attr("d", arc)
+	    .style("fill", function(d,i) { return color(i); }); //returns color from color array
 
-	  g.append("text")
-	      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-
-	      .attr("dy", ".35em")
-	      .style("text-anchor", "middle")
-	      .style('fill', '#37474F')
-	      .attr('class', function(d,i) { return classes[i]; })
-	      //.classed("graph-text", true)
-	      .text(function(d,i) { return labels[i]; });
-
-
-
-
+	g.append("text")
+	    .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+		.attr("dy", ".35em")
+		.style("text-anchor", "middle")
+		.style('fill', '#37474F')
+		.attr('class', function(d,i) { return classes[i]; }) //assign separate classes to text for easy css manipulation
+		.text(function(d,i) { return labels[i]; });
 }

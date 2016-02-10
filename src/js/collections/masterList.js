@@ -1,9 +1,12 @@
 //js/collections/masterList.js
 
-//this will house some of the back of house data? like favorites and maybe some other stuff
+/**
+* @description Constructs  & syncs master list collection fetching from server
+* @description Set up for future expansion, currently is just the favorites list
+* @constructor
+* @param none - only one instance
+*/
 var app = app || {};
-
-console.log("MASTER MASTER");
 
 var MasterList = Backbone.Firebase.Collection.extend({
 
@@ -11,16 +14,11 @@ var MasterList = Backbone.Firebase.Collection.extend({
 
 	url:'https://my-nutrition-tracker.firebaseio.com/masterList',
 
-
-	//something with local storage ?
-
 	favorited: function() {
 		return this.filter( function ( food ) {
 			return food.get('favorited');
 		})
 	}
-
-
 });
 
 app.masterList = new MasterList();

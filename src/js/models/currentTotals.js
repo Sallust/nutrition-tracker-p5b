@@ -1,7 +1,10 @@
 //js/models/currentTotals.js
 
-//hold the running total of the calories and various other measurements
-
+/**
+* @description Calculates running totals
+* @constructor
+* @param none - only one instance
+*/
 var app = app || {};
 
 var CurrentTotals = Backbone.Model.extend({
@@ -14,6 +17,10 @@ var CurrentTotals = Backbone.Model.extend({
 		prot: 0,
 		fib: 0,
 	},
+	/**
+	* @description listen for changes to major food list;
+	* also listens for change of foodList variable on date changes
+	*/
 	initialize: function() {
 		this.listenTo(app.foodList, 'all', this.recalcTotals);
 		this.listenTo(app.dateModel,'new-list', this.updateListeners);
@@ -51,9 +58,7 @@ var CurrentTotals = Backbone.Model.extend({
 	},
 	returnPercent: function(key) {
 		return this.get(key) / app.userInfo.get('DRI'+key) * 100
-
 	}
-
 })
 
 app.currentTotals = new CurrentTotals;
