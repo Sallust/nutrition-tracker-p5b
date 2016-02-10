@@ -1,31 +1,20 @@
 //js/views/sidebarView.js
 
-//This is where the search and favorite items will live
-
-//It will be structured similar to the app.js it will cach references to stuff
-
-
-//Logic that needs to live here
-
-//   The actual addition of a food item to the list
-//    maybe favorite it now? maybe later
+/**
+* @description Houses logic for sidebar View :search, autocomplete, favorites
+* @constructor
+* @param {collection}  app.searchResults - gets passed the collection with the search results
+*/
 
 var app = app || {};
-
-console.log("hey from the other side");
 
 app.SidebarView = Backbone.View.extend({
 	el: '#sidebar',
 
-	//I might not need this template if template is delagated to indiv items
-	//resultsTemplate: _.template($('#results-template').html() ),
-
 	events: {
 		'click #search': 'startSearch',
 		'keypress #autocomplete': 'onEnter',
-		'click #close': 'close',
-		'keyup #autocomplete': 'fetchAutocomplete' //keyup allows input to include thekey
-
+		'click #close': 'close'
 	},
 
 	initialize: function() {
@@ -33,37 +22,49 @@ app.SidebarView = Backbone.View.extend({
 		this.$search = this.$('#search-ul');
 		this.$favorites = this.$('#favorites-ul');
 
-		this.listenTo(app.searchResults, 'reset', this.showSearch); //reset triggered by fetching data
+		this.listenTo(this.collection, 'reset', this.showSearch); //reset triggered by fetching data
 
 		this.listenTo(app.masterList, 'add', this.addFavorite);
 		this.listenTo(app.masterList, 'reset', this.addAllFavorites);
 
-		this.fetchAutocomplete = _.debounce(this.fetchAutocomplete, 2000); //throttles request for autocomplete
-		this.listenTo(app.autocompleteResults, 'sync', this.displayAutocomplete);
+		var url = 'https://apibeta.nutritionix.com/v2/autocomplete';
+		var url2 = '&appId=0b882a3e&appKey=e7ff6dcf85cfe80ff009aea9fa767e8c';
 		self = this;
-
+		/**
+		* @description Jquery autocomplete widget; makes AJAX calls, parses, and displays autocomplete
+		* @description source: makes AJAX call, parses data into simple array and runs response on it (passing it to autocomplete)
+		*/
 		$("#autocomplete").autocomplete({
-	  		source: app.autocompleteResults.getSimpleArray(),
-	  		select: function( event, ui) {
+	  		source: function(request, response) {
+	  			$.getJSON ( url + '?q=' + request.term + url2 , function(data) {
+	  				var array = []
+	  				data.forEach(function(item){
+	  					array.push(item.text)
+	  				});
+	  				response(array); //passing autocomplete the simple array of autocomplete result names
+	  			});
+			},
+	  		select: function( event, ui) { //on Select, set input and run search on it
 	  			self.$input.val(ui.item.label)
 	  			self.startSearch();
 	  		}
 		});
-
-		//this.renderFavorites();
 	},
-
 	render: function() {
 		this.$search.html(''); //clears any existing search items
-
-		app.searchResults.each(function(food) {
+		this.collection.each(function(food) {
 			var itemView = new app.SearchItemView({ model: food });
 			this.$search.append( itemView.render().el);
 		}, this)//context
 
 	},
+
+	/**
+	* @description Creates views for Favorited Search items
+	* @param {obj} food - a food method that has been added to Favorites List
+	*/
 	addFavorite: function( food ) {
-		if(food.get('favorited')){
+		if(food.get('favorited')){ //double checks food has been favorited
 			var favItemView = new app.SearchItemView({ model: food });
 			$('#favorites-ul').append( favItemView.render().el );
 		}
@@ -72,56 +73,42 @@ app.SidebarView = Backbone.View.extend({
 		this.$favorites.html('');
 		app.masterList.favorited().each(this.addFavorite, this);
 	},
-
-	/*
-	renderFavorites: function() {
-
-		app.masterList.favorited().forEach(function( food ) {
-			var favItemView = new app.SearchItemView({ model: food});
-			this.$favorites.append( favItemView.render().el);
-		})
-	}, */
+	/**
+	* @description New search results having returned, it creates new views
+	* @description and then renders and appends those views
+	*/
 	showSearch: function() {
-		this.$favorites.hide();
-		this.$search.show();
-		this.$search.html(''); //clears any existing search items
-
-		app.searchResults.each(function(food) {
+		this.$search.html(''); //clears any previous search items
+		this.collection.each(function(food) {
 			var itemView = new app.SearchItemView({ model: food });
 			this.$search.append( itemView.render().el);
-		}, this)//context
+		}, this); //context
 	},
-
-	// IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS    IN FOCUS
-	fetchAutocomplete:function(e) {
-		var input = this.$input.val().trim().replace(/ /g, '%20');
-			app.autocompleteResults.getResults(input)
-			console.log('fetching autocomplete');
-	},
-	displayAutocomplete: function() {
-		console.log('We are synched!');
-		$('#autocomplete').autocomplete('option', 'source', app.autocompleteResults.getSimpleArray() )
-		console.log(app.autocompleteResults.getSimpleArray());
-	},
+	/**
+	* @description captures user input, formats it, and passes it to a searchResult method
+	*/
 	startSearch: function () {
 		var searchTerm = this.$input.val().trim().replace(/ /g, '%20'); //makes search term pretty and ready to make ajax request
-		app.searchResults.getSearch(searchTerm);
-
+		this.collection.getSearch(searchTerm);
+		this.$favorites.hide(); // User sees either favorites OR search, but never both
+		this.$search.show();
+		this.$search.html('<h2 class="loading">Loading Results...</h2>'); //loading indicator, cleared on return of search results
 		this.$input.val('')
-
 	},
 	onEnter: function( e ) {
 		if( e.keyCode === 13) { //ENTER KEY
 			this.startSearch();
 		}
 	},
-
-	close: function() {  //addition of anything to food list causes this
+	/**
+	* @description Closes view, prepares favorites to be seen on re-open
+	*/
+	close: function() {
 		this.$input.val('')
 		this.$favorites.show();
 		this.$search.hide();
 		$('#wrapper').toggleClass('toggled');
-
 	}
-
 })
+
+app.sidebarView = new app.SidebarView({collection: app.searchResults});
