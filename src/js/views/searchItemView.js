@@ -1,11 +1,11 @@
 //js/view/searchItemView.js
-
-//this is where the view for each search item lives
-
-console.log("SEARCH ITEM!!!!");
-
 var app = app || {};
-
+/**
+* @description Individual View tied to one search item result;
+* @description controls addition of its model to main food list or favorites list
+* @constructor View
+* @param {model}  app.food - passed the food models from search Results fetch
+*/
 app.SearchItemView = Backbone.View.extend({
 	tagName: 'li',
 
@@ -17,43 +17,22 @@ app.SearchItemView = Backbone.View.extend({
 		'click .search-name': 'addThisFood',
 		'click .star:not(.favorited)': 'makeFavorite', //only non-favorited items can be made favorite
 		'click .favorited': 'removeFavorite'
-
-		//Favorited
-		//Add to list
-
 	},
-
 	initialize: function() {
 		this.listenTo(this.model, 'change:imageUrl', this.render);
 		this.listenTo(this.model, 'change:favorited', this.render);
 		this.listenTo(this.model, 'destroy', this.remove);
-		//listen to its model? I don't think the model will change so..
-
 	},
-
 	render: function() {
-		this.$el.html( this.template( {
-			foodName: this.model.get('foodName'),
-			calories: this.model.get('calories'),
-			url: this.model.get('imageUrl'),
-			favorited: this.model.get('favorited'),
-			protein: this.model.get('prot'),
-			carb: this.model.get('carb'),
-			fat: this.model.get('fat'),
-			sug: this.model.get('sug'),
-			chol: this.model.get('chol'),
-			fiber: this.model.get('fib')
-
-
-
-			} ) );
+		this.$el.html( this.template( this.model.attributes) );
 		return this;
-
 	},
-
+	/**
+	* @description Create/save new food model in foodList by passing attributes from search food
+	* @description Closes parent side window
+	*/
 	addThisFood: function () {
-		app.foodList.create ( this.model.attributes ); //I think create is causing weird errors
-		//app.sidebarView.trigger('foodHasBeenAdded')//app.sidebarView.close(); //close side window this.model
+		app.foodList.create ( this.model.attributes );
 		app.sidebarView.close();
 	},
 	makeFavorite: function() {
@@ -64,5 +43,4 @@ app.SearchItemView = Backbone.View.extend({
 		this.model.set('favorited', false);
 		this.model.destroy();
 	}
-
 })

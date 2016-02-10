@@ -1,5 +1,4 @@
 //js/collections/searchResults.js
-
 var app = app || {};
 
 /**
@@ -23,7 +22,6 @@ var SearchResults = Backbone.Collection.extend({
 	*/
 	getSearch: function( query ) {
 		this.url = this.urlString.replace('^foodName^', query)
-		console.log('nutritionix Query')
 		this.fetch({
 			reset: true,
 			error: function() {

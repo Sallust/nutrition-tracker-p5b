@@ -1,4 +1,5 @@
 //js/models/userInfo.js
+var app = app || {};
 
 /**
 * @description Constructs model to house user info and individual user Daily Recommended Intake (DRI)
@@ -7,9 +8,6 @@
 * To extend this project in the future, these properties would be input by new users
 * and saved to a Server; Also, refactoring the data organization would continue
 */
-
-var app = app || {};
-
 var UserInfo = Backbone.Model.extend({
 	defaults: {
 		age: 30,
@@ -62,4 +60,3 @@ var UserInfo = Backbone.Model.extend({
 })
 
 app.userInfo = new UserInfo();
-

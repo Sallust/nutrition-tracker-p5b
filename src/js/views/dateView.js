@@ -1,12 +1,10 @@
 //js/views/dateView.js
-
 var app = app || {};
-
-console.log('DATE PLEASE!');
-
-
-//I will hold the logic and date surrounding creating and changing the date
-
+/**
+* @description Displays Current Date info and takes user input to change date
+* @constructor View
+* @param {model} app.date - the model holding date related data
+*/
 app.DateView = Backbone.View.extend({
 
 	el:'#date',
@@ -18,48 +16,34 @@ app.DateView = Backbone.View.extend({
 		'click #left-d': 'goToYesterday',
 		'click #right-btn': 'goToTmrw',
 		'click #right-d': 'goToTmrw'
-
-		//click left, click right
 	},
 
 	initialize: function() {
 		this.listenTo(this.model, 'all', this.render);
 		this.render();
-		//this.dateInFocus = new Date(Date.now());
-	//	this.dayBefore = this.currentDate.setDate(this.currentDate.getDate() - 1);
-	//	this.dayAfter = this.currentDate.setDate(this.currentDate.getDate() + 1);
-		//I don't think it needs to listen to anybody
-		//jk, probably needs to listen for when the app is started
 	},
-
 	render: function() {
-
-		//var date = new Date(Date.now())
-		//var yesterday = date.setDate(date.getDate() - 1);
-		//var tmrw = date.setDate(date.getDate() + 1);
-
-		this.$el.html( this.template( this.model.attributes) ) //the html of this element is the template which is passed the attibutes to change placeholders
-
-		//hmm no , we need to keep track of what date we're looking at
-
+		this.$el.html( this.template( this.model.attributes) ) //the template which is passed the attibutes to change placeholders
 	},
+
 	goToYesterday: function() {
-		console.log('everything I own in a box to the left');
 		this.model.setRelativeDay(-1);
 		this.newFoodList();
-
 	},
 	goToTmrw: function() {
 		this.model.setRelativeDay(1);
 		this.newFoodList();
-
 	},
-	newFoodList: function() {
-		delete app.foodList;
-		app.foodList = new FoodList();
-		this.model.trigger('new-list');
-		//app.foodListView.updateListeners();
-		//app.currentTotals.updateListeners();
-	}
+	/**
+	* @description Clears currentFoodList and instantiates a new one
+	* @ This allows foodlist with new url to be fetched
+	* @ TODO refactor the data organization so this workaround isn't needed
+	*/
 
+	newFoodList: function() {
+		delete app.foodList; //attempt to delete refernce to old date's foodList
+		app.foodList = new FoodList();
+		this.model.trigger('new-list'); //triggers update of listeners ->current Totals & foodlist
+	}
 })
+

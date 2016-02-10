@@ -1,3 +1,4 @@
+//js/models/food.js
 var app = app || {};
 
 /**
@@ -19,7 +20,7 @@ app.Food = Backbone.Model.extend({
 		chol: 0,
 		added: false,
 		favorited: false,
-		imageUrl: 'http://lorempixel.com/50/50/food' //random picture of food as placeholder unil flickr url arrives
+		imageUrl: 'http://lorempixel.com/75/75/food' //random picture of food as placeholder unil flickr url arrives
 	},
 	/**
 	* @description Instantiates a food method from search data
@@ -39,7 +40,7 @@ app.Food = Backbone.Model.extend({
 				sug: Math.round(attrs.fields.nf_sugars) || 0,
 				chol: Math.round(attrs.fields.nf_cholesterol) || 0,
 			});
-			if (this.get('imageUrl') === 'http://lorempixel.com/50/50/food') { //if flickr photo has not been saved
+			if (this.get('imageUrl') === 'http://lorempixel.com/75/75/food') { //if flickr photo has not been saved
 				var newImage = new app.ImageModel({name: attrs.fields.item_name})
 				this.listenTo(newImage, 'change:url', this.setImage)
 			}

@@ -5,7 +5,6 @@ var app = app || {};
 * @constructor
 * @param none - only one instance
 */
-
 var Totals = Backbone.Firebase.Collection.extend({
 
 	model: app.DataPoint,

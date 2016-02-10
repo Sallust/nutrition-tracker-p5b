@@ -1,13 +1,10 @@
 //js/views/sidebarView.js
-
+var app = app || {};
 /**
 * @description Houses logic for sidebar View :search, autocomplete, favorites
 * @constructor
 * @param {collection}  app.searchResults - gets passed the collection with the search results
 */
-
-var app = app || {};
-
 app.SidebarView = Backbone.View.extend({
 	el: '#sidebar',
 
@@ -56,7 +53,6 @@ app.SidebarView = Backbone.View.extend({
 			var itemView = new app.SearchItemView({ model: food });
 			this.$search.append( itemView.render().el);
 		}, this)//context
-
 	},
 
 	/**
@@ -111,4 +107,3 @@ app.SidebarView = Backbone.View.extend({
 	}
 })
 
-app.sidebarView = new app.SidebarView({collection: app.searchResults});

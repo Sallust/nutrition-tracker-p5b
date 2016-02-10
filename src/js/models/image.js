@@ -8,7 +8,7 @@ var app = app || {};
 app.ImageModel = Backbone.Model.extend({
 	defaults: {
 		name: 'food',
-		url: 'http://lorempixel.com/50/50/food'
+		url: 'http://lorempixel.com/75/75/food'
 	},
 	parse: function(data) {
 		try {
@@ -19,7 +19,7 @@ app.ImageModel = Backbone.Model.extend({
 			console.log(e)
 		}
 	},
-	urlString: "https://api.flxxickr.com/services/rest/?method=flickr.photos.search&api_key=48379916a60871c6908ced4b30cd156f&tags=food&text=^imageQuery^&sort=relevance&content_type=1&per_page=2&format=json&nojsoncallback=1",
+	urlString: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=48379916a60871c6908ced4b30cd156f&tags=food&text=^imageQuery^&sort=relevance&content_type=1&per_page=2&format=json&nojsoncallback=1",
 
 	errorHandler: function() {
 		if(!this.hadReceivedMessage) {
@@ -29,11 +29,8 @@ app.ImageModel = Backbone.Model.extend({
 	},
 
 	initialize: function() {
-		//on init, name is set at construction
-		var textQuery = encodeURIComponent(this.get('name').split(' ', 3).join(' '))
-
+		var textQuery = encodeURIComponent(this.get('name').split(' ', 3).join(' ')); //shortens and formats search names for api call
 		this.url = this.urlString.replace('^imageQuery^', textQuery);
-		console.log(textQuery);
 		this.fetch({error: this.errorHandler});
 	}
 })
