@@ -63,7 +63,7 @@ gulp.task('default', ['lint', 'optimize-stack', 'watch']);
 gulp.task('brow-sync', function() {
 	browserSync.init({
 		server:{
-			baseDir: "./dist"
+			baseDir: "./src"
 		},
 		socket: {
 			domain: 'http://localhost:3000'

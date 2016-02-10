@@ -15,7 +15,7 @@
 }
 
 #wrapper.toggled {
-    padding-left: 450px;
+  /*  padding-left: 450px;  So search floats over rest of screen */
 }
 
 #sidebar-wrapper {
@@ -88,7 +88,7 @@
         width: 350px;
     }
     #wrapper {
-        padding-left: 350px;
+       /* padding-left: 350px; */
     }
 
     #wrapper.toggled {
@@ -120,7 +120,7 @@
         width: 450px;
     }
     #wrapper {
-        padding-left: 450px;
+       /* padding-left: 450px; */
     }
 
     #wrapper.toggled {
