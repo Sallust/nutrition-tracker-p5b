@@ -28,9 +28,7 @@ app.TrendsView = Backbone.View.extend({
 			this.$el.show()
 			for (var i = 0; i < this.charts.length; i++) {
 				var graphOrder = 'graph-' + (i+1);
-				console.log(graphOrder)
 				var DRIName = 'DRI' + this.myKeys[i];
-				console.log(app.userInfo.get(DRIName));
 				this.$charts.append(this.template({className: graphOrder}));
 				makeLineChart(this.collection.toJSON(), this.charts[i], 600, 200, this.myKeys[i], '.' + graphOrder, app.userInfo.get(DRIName))
 			};

@@ -4,7 +4,7 @@ var testData = {
 
 
 
-function makeDonut(left, consumed, divID) {
+function makeDonut(left, consumed, divID, colorArray) {
 
 	var myData =  {
 		calories:[left, consumed]
@@ -17,7 +17,7 @@ function makeDonut(left, consumed, divID) {
 	var classes = ['graph-left', 'graph-consumed'];
 
 	var color = d3.scale.ordinal()			//set colors grao match palette
-	    .range([ "#afafaf","#FF8F00" ]);
+	    .range(colorArray); //grey, orange
 
 	var arc = d3.svg.arc()
 	    .outerRadius(radius - 10)
