@@ -40,15 +40,15 @@ function makeLineChart(array, title, setwidth, setheight, key, IDtag, target) {
 	*@description Did not end up using this functionality but may in the future
 	*@param {data} d - the d3 data value within the domain set above
 	*/
-	//var xLabels = function(d) {
-		//return !array[d] ? '' : width < 400 ? array[d].date.slice(-2) : array[d].date.slice(-4); //shorter labels when width smaller
-	//}
+	var xLabels = function(d) {
+		return !array[d] ? '' : width < 600 ? array[d].date.slice(-2) : array[d].date.slice(-4); //shorter labels when width smaller
+	}
 
 	var xAxis = d3.svg.axis()
 		.scale(xRange)
 		.tickSize(2)
-		.tickSubdivide(true);
-		//.tickFormat(xLabels); //pass labels created by above function
+		.tickSubdivide(true)
+		.tickFormat(xLabels); //pass labels created by above function
 
 	var yAxis = d3.svg.axis()
 		.scale(yRange)

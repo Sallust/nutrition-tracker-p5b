@@ -538,10 +538,19 @@ text-shadow: 0 0 3px #fff;
 #line-graph {
 	margin: auto;
 	display:block;
+	transition: all 0.3s ease-in-out;
 }
 
 /*   Responsive Styles Radio Button bar and size of sidebar columns
 The first deals with the awkward transition from 2 colums back to 1 */
+@media screen and  (max-width: 1222px) {
+	#line-graph {
+		transform: scale(0.8) translateX(-50px);
+		transform-origin: top center;
+	}
+}
+
+
 @media screen and (max-width: 975px) {
 	.big {
 		font-size: 60px;
@@ -555,6 +564,10 @@ The first deals with the awkward transition from 2 colums back to 1 */
 
 	.info-cal {
 		width: 30%
+	}
+	#line-graph {
+		transform: scale(0.7) translateX(-125px);
+		transform-origin: top center;
 	}
 
 
@@ -593,26 +606,50 @@ The first deals with the awkward transition from 2 colums back to 1 */
 	}
 
 	.sub-section {
-		width: 88%;
+		width: 92%;
 		margin: 8px auto;
 	}
 	.big {
 		font-size: 80px;
 	}
-}
+	#line-graph {
+		transform: none;
 
-@media screen and (max-width: 415px) {
+	}
+}
+@media screen and (max-width: 610px) {
+	#line-graph {
+		transform: scale(0.8) translateX(-55px);
+		transform-origin: top center;
+	}
+}
+@media screen and (max-width: 500px) {
 	.my-btn {
 		padding: 6px 8px;
 	}
 
 	.sub-section {
 		width: 98%;
+		min-width: 300px;
+	}
+
+	.hide-tog {
+		display: none;
+	}
+	.info-item {
+		width: 25%;
+	}
+
+	.info-cal {
+		width: 30%
+	}
+	ul {
+		padding: 0 0 0 10px;
 	}
 
 	#line-graph {
-		transform: scale(0.8) translateX(-50px);
-		transform-origin: top left;
+		transform: scale(0.7) translateX(-140px);
+		transform-origin: top center;
 	}
 
 	.x-axis,
@@ -624,3 +661,8 @@ The first deals with the awkward transition from 2 colums back to 1 */
 		font-size: 60px;
 	}
 }
+@media screen and (max-width: 359px) {
+	#line-graph {
+		transform: scale(0.6) translateX(-40px);
+		transform-origin: top left;
+	}

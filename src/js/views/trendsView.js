@@ -30,7 +30,7 @@ app.TrendsView = Backbone.View.extend({
 				/**
 				* @description Creates line chart for this nutrient, passing needed data & keys
 				*/
-				makeLineChart(this.collection.toJSON(), this.charts[i], 600, 200, this.myKeys[i], '.' + graphOrder, app.userInfo.get(DRIName));
+				makeLineChart(this.collection.toJSON(), this.charts[i], 575, 200, this.myKeys[i], '.' + graphOrder, app.userInfo.get(DRIName));
 			}
 		}
 	}
