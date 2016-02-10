@@ -16,6 +16,7 @@ var CurrentTotals = Backbone.Model.extend({
 	},
 	initialize: function() {
 		this.listenTo(app.foodList, 'all', this.recalcTotals);
+		this.listenTo(app.dateModel,'new-list', this.updateListeners);
 	},
 	updateListeners: function() {
 		this.listenTo(app.foodList, 'all', this.recalcTotals);
@@ -47,6 +48,10 @@ var CurrentTotals = Backbone.Model.extend({
 			prot: prot,
 			fib: fib
 		})
+	},
+	returnPercent: function(key) {
+		return this.get(key) / app.userInfo.get('DRI'+key) * 100
+
 	}
 
 })

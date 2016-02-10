@@ -46,10 +46,20 @@ app.DateView = Backbone.View.extend({
 	goToYesterday: function() {
 		console.log('everything I own in a box to the left');
 		this.model.setRelativeDay(-1);
+		this.newFoodList();
 
 	},
 	goToTmrw: function() {
 		this.model.setRelativeDay(1);
+		this.newFoodList();
+
+	},
+	newFoodList: function() {
+		delete app.foodList;
+		app.foodList = new FoodList();
+		this.model.trigger('new-list');
+		//app.foodListView.updateListeners();
+		//app.currentTotals.updateListeners();
 	}
 
 })
