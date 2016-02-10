@@ -188,6 +188,7 @@ body {
 	position: relative;
 	padding: 0 10px;
 	min-height: 1px;
+	cursor: pointer;
 }
 
 

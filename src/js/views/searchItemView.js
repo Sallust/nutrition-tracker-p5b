@@ -15,6 +15,7 @@ app.SearchItemView = Backbone.View.extend({
 
 	events: {
 		'click .search-name': 'addThisFood',
+		'click .side-25': 'addThisFood',
 		'click .star:not(.favorited)': 'makeFavorite', //only non-favorited items can be made favorite
 		'click .favorited': 'removeFavorite'
 	},
