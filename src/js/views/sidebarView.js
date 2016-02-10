@@ -34,15 +34,15 @@ app.SidebarView = Backbone.View.extend({
 		$("#autocomplete").autocomplete({
 	  		source: function(request, response) {
 	  			$.getJSON ( url + '?q=' + request.term + url2 , function(data) {
-	  				var array = []
+	  				var array = [];
 	  				data.forEach(function(item){
-	  					array.push(item.text)
+	  					array.push(item.text);
 	  				});
 	  				response(array); //passing autocomplete the simple array of autocomplete result names
 	  			});
 			},
 	  		select: function( event, ui) { //on Select, set input and run search on it
-	  			self.$input.val(ui.item.label)
+	  			self.$input.val(ui.item.label);
 	  			self.startSearch();
 	  		}
 		});
@@ -52,7 +52,7 @@ app.SidebarView = Backbone.View.extend({
 		this.collection.each(function(food) {
 			var itemView = new app.SearchItemView({ model: food });
 			this.$search.append( itemView.render().el);
-		}, this)//context
+		}, this);//context
 	},
 
 	/**
@@ -89,7 +89,7 @@ app.SidebarView = Backbone.View.extend({
 		this.$favorites.hide(); // User sees either favorites OR search, but never both
 		this.$search.show();
 		this.$search.html('<h2 class="loading">Loading Results...</h2>'); //loading indicator, cleared on return of search results
-		this.$input.val('')
+		this.$input.val('');
 	},
 	onEnter: function( e ) {
 		if( e.keyCode === 13) { //ENTER KEY
@@ -100,10 +100,9 @@ app.SidebarView = Backbone.View.extend({
 	* @description Closes view, prepares favorites to be seen on re-open
 	*/
 	close: function() {
-		this.$input.val('')
+		this.$input.val('');
 		this.$favorites.show();
 		this.$search.hide();
 		$('#wrapper').toggleClass('toggled');
 	}
-})
-
+});

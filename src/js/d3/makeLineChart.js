@@ -9,25 +9,25 @@
 * @param {number} target - DRI target to construct horizontal line on chart
 */
 
-function makeLineChart(array, title, width, height, key, IDtag, target) {
-	var width = width;
-	var height = height;
+function makeLineChart(array, title, setwidth, setheight, key, IDtag, target) {
+	var width = setwidth;
+	var height = setheight;
 	var margins = {
 		top: 20,
 		right: 20,
 		bottom: 20,
 		left: 50
-	}
+	};
 
 	var ymin = app.totals.min(function(model){ //using collection's min method to return smalled method, and calling get to retreive that value
-			return model.get(key)
-		}).get(key)
+			return model.get(key);
+		}).get(key);
 
 	var ymaxValue = app.totals.max(function(model){
-			return model.get(key)
-		}).get(key)
+			return model.get(key);
+		}).get(key);
 
-	var ymax = Math.max(ymaxValue, target * 1.25) //the largest y value is larger of the highest input value or slightly more than the daily max
+	var ymax = Math.max(ymaxValue, target * 1.25); //the largest y value is larger of the highest input value or slightly more than the daily max
 
 	var graph = d3.select(IDtag);
 
@@ -47,7 +47,7 @@ function makeLineChart(array, title, width, height, key, IDtag, target) {
 	var xAxis = d3.svg.axis()
 		.scale(xRange)
 		.tickSize(2)
-		.tickSubdivide(true)
+		.tickSubdivide(true);
 		//.tickFormat(xLabels); //pass labels created by above function
 
 	var yAxis = d3.svg.axis()
@@ -86,10 +86,10 @@ function makeLineChart(array, title, width, height, key, IDtag, target) {
 
 	var lineFunc = d3.svg.line() //defines what values get drawn based on data and scale
 		.x(function(d, i){
-			return xRange(i)
+			return xRange(i);
 		})
 		.y(function(d){
-			return yRange(d[key])
+			return yRange(d[key]);
 		})
 		.interpolate('cardinal'); //versus linear
 

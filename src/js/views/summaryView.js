@@ -44,9 +44,9 @@
  		}
 
 		if ( consumed < 10) { // hide graph title text when there isn't data yet, or when it's about to be covered
-			$('.graph-consumed').hide()
+			$('.graph-consumed').hide();
 		} else if ( left < 50) {
-		 	$('.graph-left').hide()
+		 	$('.graph-left').hide();
 		} else {
 		 	$('.graph-consumed').show();
 		 	$('.graph-left').show();
@@ -55,4 +55,4 @@
  	toggleOpen: function() {
  		$('#wrapper').toggleClass('toggled');
  	}
- })
+ });

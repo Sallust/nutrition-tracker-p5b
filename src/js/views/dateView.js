@@ -23,7 +23,7 @@ app.DateView = Backbone.View.extend({
 		this.render();
 	},
 	render: function() {
-		this.$el.html( this.template( this.model.attributes) ) //the template which is passed the attibutes to change placeholders
+		this.$el.html( this.template( this.model.attributes) ); //the template which is passed the attibutes to change placeholders
 	},
 
 	goToYesterday: function() {
@@ -45,5 +45,5 @@ app.DateView = Backbone.View.extend({
 		app.foodList = new FoodList();
 		this.model.trigger('new-list'); //triggers update of listeners ->current Totals & foodlist
 	}
-})
+});
 

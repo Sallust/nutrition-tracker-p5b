@@ -45,7 +45,7 @@ var CurrentTotals = Backbone.Model.extend({
 			sug += food.get('sug');
 			prot += food.get('prot');
 			fib += food.get('fib');
-		})
+		});
 		this. set({
 			cal: cal,
 			fat: fat,
@@ -54,11 +54,11 @@ var CurrentTotals = Backbone.Model.extend({
 			sug: sug,
 			prot: prot,
 			fib: fib
-		})
+		});
 	},
 	returnPercent: function(key) {
-		return this.get(key) / app.userInfo.get('DRI'+key) * 100
+		return this.get(key) / app.userInfo.get('DRI'+key) * 100;
 	}
-})
+});
 
-app.currentTotals = new CurrentTotals;
+app.currentTotals = new CurrentTotals();

@@ -41,17 +41,17 @@ app.Food = Backbone.Model.extend({
 				chol: Math.round(attrs.fields.nf_cholesterol) || 0,
 			});
 			if (this.get('imageUrl') === 'http://lorempixel.com/75/75/food') { //if flickr photo has not been saved
-				var newImage = new app.ImageModel({name: attrs.fields.item_name})
-				this.listenTo(newImage, 'change:url', this.setImage)
+				var newImage = new app.ImageModel({name: attrs.fields.item_name});
+				this.listenTo(newImage, 'change:url', this.setImage);
 			}
 		} catch (e) {
-			console.log(e)
+			console.log(e);
 		}
 	},
 	toggleFavorite: function() {
 		this.set({
 			favorited: !this.get('favorited')
-		})
+		});
 	},
 	/**
 	* @description On arrival of image data, changes food Url

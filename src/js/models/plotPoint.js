@@ -13,4 +13,4 @@ app.DataPoint = Backbone.Model.extend({
 		prot: 200,
 		fat: 85
 	}
-})
+});

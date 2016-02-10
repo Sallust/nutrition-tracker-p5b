@@ -1,4 +1,4 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
+/* General Styles  */
 
 li {
 	list-style-type: none;
@@ -11,12 +11,11 @@ ul {
 a {
 	text-decoration: none;
 	color: #fff;
-	font-size: 14px
+	font-size: 14px;
 }
 
 a:hover {
 	text-decoration: none;
-
 }
 
 #search {
@@ -31,14 +30,7 @@ a:hover {
 	background: #fff;
 	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 	transition: all 0.3s ease;
-
 }
-/* SIDEBAR VIEW CSS */
-
-
-/* New CSS */
-
-
 
 body {
 	padding-top: 50px;
@@ -47,6 +39,7 @@ body {
 	font-family: "Roboto", sans-serif;
 }
 
+/* Nav Bar CSS */
 .my-nav {
 	background-image: linear-gradient(to bottom, #78909c 0%, #546e7a 100%);
 	border-color: #455a64;
@@ -87,14 +80,7 @@ body {
 }
 
 .my-btn:hover {
-		background-image: linear-gradient(to bottom, #FFC107 0, #FFA000 100%);
-
-}
-
-
-.filter-checkbox {
-	margin: 10px 0 10px 20px;
-	font-weight: bold;
+	background-image: linear-gradient(to bottom, #FFC107 0, #FFA000 100%);
 }
 
 /* Left Sidebar Styles */
@@ -122,6 +108,7 @@ body {
 	display: inline;
 
 }
+
 #close {
 	float: right;
 	margin: 0 12px 0 0;
@@ -137,13 +124,12 @@ body {
 	transform: scale(1.5);
 
 }
+
 .directions {
 	font-size: 15px;
 	line-height: 15px;
 	text-align: center;
 }
-
-
 
 .inline {
 	display: inline;
@@ -191,8 +177,6 @@ body {
 	cursor: pointer;
 }
 
-
-
 .side-75 {
 	width: 80%;
 	float: right;
@@ -216,8 +200,6 @@ body {
 .favorited {
 	color:green;
 }
-
-
 
 .search-name {
 	margin: 0 5px 0 0;
@@ -267,8 +249,6 @@ hr {
 .info-item {
 	width: 13.33%;
 	font-size:17px;
-
-
 	text-align: center;
 	border-right: 1px solid #78909c;
 }
@@ -303,32 +283,26 @@ hr {
 	display: flex;
 	font-size: 0.8em;
 }
+
 .search-li {
 	transition: all 0.5s ease;
 }
 
-
-
-
-
-
-
-
 /* HEADER Styles */
 header {
-
 	font-size: 50px;
 	text-decoration: none;
 	color: #37474F;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
 		0 1px 1px rgba(0, 0, 0, .25);
 }
+
 .cheesy-trophy {
 	margin:  0 2vw 0 3vw;
 
 }
-h1 {
 
+h1 {
 	display: inline;
 }
 
@@ -338,27 +312,24 @@ h1 {
 	font-size: 30px;
 	vertical-align: center;
 	line-height: 50px;
-
 }
 
 .date-div {
 	margin: 0 auto;
 }
+
 .flanking-date {
 	font-size: 0.6em;
 	vertical-align: 3px;
 	margin: 0 10px;
 	transition: all 0.2s ease;
-
-
 }
+
 .flanking-date:hover {
 	cursor: pointer;
 	color:#FFC400;
 	font-weight: bold;
 	font-size: 0.65em;
-
-
 }
 
 .date-in-focus {
@@ -373,13 +344,13 @@ color: #FFC400;
 	background: none;
 	font-size: 30px;
 	transition: all .2s ease-in-out;
-
 }
 
 #left-btn:hover,
 #right-btn:hover {
 	transform: scale(1.5);
 }
+
 /* First Row Sections */
 .row-1 {
 	display: flex;
@@ -418,6 +389,7 @@ h3 {
 	font-size: 30px;
 	transition: all .2s ease-in-out;
 }
+
 .header-btn:hover {
 	transform: scale(1.5);
 }
@@ -433,9 +405,11 @@ h3 {
 	font-size: 20px;
 	transition: all .2s ease-in-out;
 }
+
 .destroy:hover {
 	transform: scale(1.5);
 }
+
 .text-btn {
 	background-image: linear-gradient(to bottom, #FFD54F 0, #FFC107 100%);
 	float: right;
@@ -450,7 +424,6 @@ h3 {
 
 .text-btn:hover {
 		background-image: linear-gradient(to bottom, #FFC107 0, #FFA000 100%);
-
 }
 
 .sum-row {
@@ -462,21 +435,21 @@ h3 {
 	margin: auto;
 	text-align: center;
 }
+
 .sum-sub {
 	font-size: 20px;
 	margin: 0;
 }
 
-
 .big {
 	font-size: 80px;
 	font-weight: 900;
-
 }
 
 .test {
 	width: 100%;
 }
+
 #donut {
 	position: relative;
 	margin: 0 10px 0 0;
@@ -508,7 +481,7 @@ text-shadow: 0 0 3px #fff;
 }
 
 /* Totals Styles */
-@keyframes graph-transition {
+@keyframes graph-transition { /* Customized animation definition */
 	0% {width: 0px;}
 	100% {}
 }
@@ -531,6 +504,7 @@ text-shadow: 0 0 3px #fff;
 	width: 100%;
 	box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.35)
 }
+
 #shame-red {
 	background-image: linear-gradient(to bottom, #DA6D6A 0, #9A413E 100%);
 }
@@ -546,8 +520,8 @@ text-shadow: 0 0 3px #fff;
 .right-unit {
 	float: right;
 }
-/* Trends Styles */
 
+/* Trends Styles */
 
 #trends {
 	overflow: hidden;
@@ -556,14 +530,13 @@ text-shadow: 0 0 3px #fff;
 .graph-title {
 	font-size: 25px;
 }
+
 #line-graph {
 	margin: auto;
 	display:block;
-
 }
 
 /*   Responsive Styles Radio Button bar and size of sidebar columns */
-
 
 @media screen and (max-width: 767px) {
 	.side-25 {
@@ -575,19 +548,24 @@ text-shadow: 0 0 3px #fff;
 		width: 75%;
 		padding: 0 10px 0 5px;
 	}
+
 	.hide-tog {
 		display: none;
 	}
+
 	.info-item {
 		width: 25%;
 	}
+
 	.info-cal {
 		width: 30%
 	}
+
 	.my-input {
 		margin: 0 8px 0 10px;
 		width: 83%;
 	}
+
 	.flanking-date {
 		display: none;
 	}
@@ -611,10 +589,9 @@ text-shadow: 0 0 3px #fff;
 		transform: scale(0.8) translateX(-50px);
 		transform-origin: top left;
 	}
+
 	.x-axis,
 	.y-axis {
 		display: none;
 	}
-
-
 }

@@ -1,6 +1,5 @@
 //js/collections/searchResults.js
 var app = app || {};
-
 /**
 * @description Retreives search results through AJAX request, holds results until next fetch
 * @constructor
@@ -21,15 +20,15 @@ var SearchResults = Backbone.Collection.extend({
 	* @param {string} query - formatted input passed from sidebar View
 	*/
 	getSearch: function( query ) {
-		this.url = this.urlString.replace('^foodName^', query)
+		this.url = this.urlString.replace('^foodName^', query);
 		this.fetch({
 			reset: true,
 			error: function() {
-				alert('Oh No! It looks like something wrong happened when trying to fetch results. Wait a little bit and please try again.')
-				$('.loading').text("We'll get 'em next time, tiger!")
+				alert('Oh No! It looks like something wrong happened when trying to fetch results. Wait a little bit and please try again.');
+				$('.loading').text("We'll get 'em next time, tiger!");
 			}
 		});
 	}
-})
+});
 
 app.searchResults = new SearchResults();

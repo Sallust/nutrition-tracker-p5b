@@ -20,7 +20,7 @@ var DateModel = Backbone.Model.extend({
 			todayDateStr: d.toDateString(),
 			dayInFocus: d,
 		});
-		this.setRelativeDay(0)
+		this.setRelativeDay(0);
 	},
 	/**
 	* @description Sets attributes in relation to previous date
@@ -45,7 +45,7 @@ var DateModel = Backbone.Model.extend({
 			focalDateStr: currentDay.toDateString(),
 			tmrwDateStr: tmrw.toDateString(),
 			todayInFocus: currentDay.toDateString() === this.get('todayDateStr') ? true : false //determines if Today will be "today" or a date
-		})
+		});
 	}
 });
 

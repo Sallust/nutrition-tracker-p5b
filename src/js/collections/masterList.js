@@ -17,7 +17,7 @@ var MasterList = Backbone.Firebase.Collection.extend({
 	favorited: function() {
 		return this.filter( function ( food ) {
 			return food.get('favorited');
-		})
+		});
 	}
 });
 

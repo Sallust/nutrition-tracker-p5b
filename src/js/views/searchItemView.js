@@ -44,4 +44,4 @@ app.SearchItemView = Backbone.View.extend({
 		this.model.set('favorited', false);
 		this.model.destroy();
 	}
-})
+});

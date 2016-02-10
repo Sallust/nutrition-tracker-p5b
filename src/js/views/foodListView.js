@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 //js/views/foodListView.js
 var app = app || {};
 
@@ -16,7 +16,7 @@ app.FoodListView = Backbone.View.extend({
 	},
 
 	initialize: function () {
-		this.$list = this.$('#food-list')
+		this.$list = this.$('#food-list');
 
 		this.listenTo(app.foodList, 'add', this.addFood);
 		this.listenTo(app.foodList, 'reset', this.addAllFood);
@@ -44,4 +44,4 @@ app.FoodListView = Backbone.View.extend({
 		this.listenTo(app.foodList, 'add', this.addFood);
 		this.listenTo(app.foodList, 'new', this.addAllFood);
 	}
-})
+});

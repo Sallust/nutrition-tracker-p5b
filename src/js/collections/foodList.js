@@ -1,4 +1,4 @@
-var app = app || {}
+var app = app || {};
 /**
 * @description Collection of foods that have been added, synced to firebase
 * @description In hindsight, would have organized data differently and
@@ -23,7 +23,7 @@ var FoodList = Backbone.Firebase.Collection.extend({
 		this.url =  this.urlStr + app.dateModel.get('todayFileStr');
 		var self = this;
 		setTimeout( function(self) { //Just enough time to wait for listeners to be updated to new instance of Foodlist
-			self.trigger('new')
+			self.trigger('new');
 		},10, self);
 	}
 });

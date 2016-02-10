@@ -26,12 +26,12 @@ var Totals = Backbone.Firebase.Collection.extend({
 			carb: totals.get('carb'),
 			prot: totals.get('prot'),
 			fat: totals.get('fat')
-		},{merge: true})
+		},{merge: true});
 
 	},
 	comparator: function( dataPoint) {
 		return dataPoint.get('date'); //chronological order
 	}
-})
+});
 
 app.totals = new Totals();

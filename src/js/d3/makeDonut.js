@@ -25,9 +25,9 @@ function makeDonut(left, consumed, divID, colorArray) {
 	    .innerRadius(radius - 30);
 
 	var pie = d3.layout.pie()
-	    .sort(null)
+	    .sort(null);
 
-	var labels = [ "left","consumed"]
+	var labels = [ "left","consumed"];
 
 	var svg = d3.select(divID).append("svg")  //now appends chart to divID set in function
 	    .attr("width", width)

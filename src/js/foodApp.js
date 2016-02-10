@@ -7,4 +7,4 @@ $(function() {
 	app.sidebarView = new app.SidebarView({collection: app.searchResults});
 	app.summaryView = new app.SummaryView({model: app.currentTotals});
 	app.trendsView = new app.TrendsView({collection: app.totals});
-})
+});

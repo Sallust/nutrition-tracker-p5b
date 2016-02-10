@@ -49,7 +49,7 @@ gulp.task('minify-html', function() {
 })
 
 gulp.task('lint', function() {
-    return gulp.src('src/js/app.js')
+    return gulp.src(['src/js/collections/*.js', 'src/js/d3/*.js', 'src/js/models/*.js','src/js/views/*.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -63,7 +63,7 @@ gulp.task('default', ['lint', 'optimize-stack', 'watch']);
 gulp.task('brow-sync', function() {
 	browserSync.init({
 		server:{
-			baseDir: "./src"
+			baseDir: "./dist"
 		},
 		socket: {
 			domain: 'http://localhost:3000'

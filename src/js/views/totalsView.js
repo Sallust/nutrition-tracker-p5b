@@ -39,8 +39,8 @@ app.TotalsView = Backbone.View.extend({
 				DRI: element.DRI,
 				percent: percentString
 			}));
-		};
+		}
 	}
-})
+});
 
 

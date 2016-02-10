@@ -48,4 +48,4 @@ app.FoodView = Backbone.View.extend({
 			this.remove();
 		} );
 	}
-})
+});

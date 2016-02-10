@@ -57,6 +57,6 @@ var UserInfo = Backbone.Model.extend({
 			]
 		});
 	}
-})
+});
 
 app.userInfo = new UserInfo();
