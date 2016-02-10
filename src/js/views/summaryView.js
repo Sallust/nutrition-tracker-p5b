@@ -29,9 +29,15 @@ console.log("I'm ready to summarize")
  			isOver: isOver
  		}));
 
- 		makeDonut( left, consumed ,'#donut');
- 		//makeDonut(99, 1 ,'#donut');
-		if ( consumed < 10) {
+ 		if (!isOver) {
+ 			makeDonut( left, consumed ,'#donut', [ "#afafaf","#FF8F00" ]); //normally construct graph
+ 		} else {
+ 			makeDonut( consumed , left,'#donut', ["#FF8F00" , "#B0514E"]); //reverse colors and change text when over DRI
+ 			$('.graph-consumed').text('OVER!!!');
+ 			$('.graph-left').text('');
+ 		}
+
+		if ( consumed < 10) { // hide graph title text when there isn't data yet, or when it's about to be covered
 			$('.graph-consumed').hide()
 		} else if ( left < 50) {
 		 	$('.graph-left').hide()

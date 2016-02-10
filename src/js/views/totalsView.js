@@ -1,6 +1,5 @@
 //js/views/totalsView.js
 
-//I will store the view for the totals
 
 var app = app || {};
 
@@ -29,7 +28,7 @@ app.TotalsView = Backbone.View.extend({
 	},
 	render: function() {
 		this.$ul.html('');
-
+/*
 		var calPercent = this.model.get('cal')/this.DRICal * 100;
 		var fatPercent = this.model.get('fat')/this.DRIFat * 100;
 		var protPercent = this.model.get('prot')/this.DRIProt * 100;
@@ -37,7 +36,7 @@ app.TotalsView = Backbone.View.extend({
 		var sugPercent = this.model.get('sug')/this.DRISug * 100;
 		var cholPercent = this.model.get('chol')/this.DRIChol * 100;
 		var fibPercent = this.model.get('fib')/this.DRIFib * 100;
-
+*/
 
 
 		for (var i = 0; i < this.DRIArray.length; i++) {
@@ -47,18 +46,12 @@ app.TotalsView = Backbone.View.extend({
 			var onOverClass = (key === 'prot' || key === 'fib') ? 'success-gold' : 'shame-red'; // when user hits protein or fiber goal, bar is red, for all others bar turns nasty red
 			var percentString = percent < 100 ? percent + '%' : '100%" id="'+ onOverClass;
 			this.$ul.append(this.liTemplate({
-				name: element.name+ 'WOW',
+				name: element.name,
 				total: this.model.get(key),
 				unit: element.unit,
 				DRI: element.DRI,
 				percent: percentString
 			}))
-
-
-
 		};
-//$('.totals-bar').attr('style', 'width: 5px');
-//$('.totals-bar').attr('style', 'width: 500px');
-
 	}
 })

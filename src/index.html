@@ -89,6 +89,7 @@
                         <h3>Totals!!</h3>
                     </div>
                     <div id="totals-view">
+                        <ul id="totals-ul"></ul>
                     </div>
                 </section>
             </div>
@@ -196,7 +197,7 @@
     </script>
 
      <script type="text/template" id="totals-template">
-        <ul>
+        <ul id="totals-ul">
             <li>
                 Calories: <span class="right-unit"> <%= calTotal %> cal / <%= DRICal %>cal</span>
             </li>
@@ -241,6 +242,16 @@
                 <div class="totals-bar" style="width: <%= fibPercent %>"></div>
             </li>
         </ul>
+    </script>
+
+    <script type="text/template" id="totals-li-template">
+        <li>
+            <%= name %>: <span class="right-unit"> <%= total %><%= unit %>  / <%= DRI %><%= unit %></span>
+        </li>
+        <li class="base-bar">
+            <div class="totals-bar" style="width: <%= percent %>"></div>
+        </li>
+
     </script>
 
     <script type="text/template" id="search-item-template">

@@ -33,16 +33,6 @@ a:hover {
 	transition: all 0.3s ease;
 
 }
-.sub-section:last-child {
-	min-width: 350px;
-	width: 45%;
-	margin: 8px auto;
-	background: #fff;
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-	transition: all 0.3s ease;
-
-}
-
 /* SIDEBAR VIEW CSS */
 
 
@@ -400,22 +390,8 @@ color: #FFC400;
 	flex-wrap: wrap;
 	align-items: flex-start;
 }
-#food-mainX {
-	min-width: 350px;
-	width: 45%;
-	margin: 8px;
-	background: #fff;
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-}
 
- #trendsX,
- .totalsX {
- 	width: 50%;
- 	margin: 8px;
-	background: #fff;
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
- }
- .section-header {
+.section-header {
  	background: #FFC107;
 	line-height: 16px;
 	text-indent: 30px;
@@ -531,19 +507,25 @@ text-shadow: 0 0 3px #fff;
 }
 
 /* Totals Styles */
+@keyframes graph-transition {
+	0% {width: 0px;}
+	100% {}
+}
+
 .totals-bar {
 	height: 10px;
 	position: absolute;
 	background-image: linear-gradient(to bottom, #5cb85c 0, #419641 100%);
 	margin: 0 0 5px 0;
+	animation: graph-transition 2s cubic-bezier(0.35,0.95,0.67,0.99);
 }
+
 .base-bar {
 	position: relative;
 	overflow: hidden;
 	display: block;
 	border-radius: 3px;
 	background-color: #F3F3F3;
-
 	height: 10px;
 	width: 100%;
 	box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.35)
@@ -613,10 +595,6 @@ text-shadow: 0 0 3px #fff;
 		width: 88%;
 		margin: 8px auto;
 	}
-	.sub-section:last-child {
-		width: 88%;
-		margin: 8px auto;
-	}
 }
 
 @media screen and (max-width: 415px) {
@@ -624,10 +602,7 @@ text-shadow: 0 0 3px #fff;
 		padding: 6px 8px;
 	}
 
-	#summary,
-	.totals,
-	#food-main,
-	#trends {
+	.sub-section {
 		width: 98%;
 	}
 
