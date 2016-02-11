@@ -6,8 +6,6 @@ var app = app || {};
 * @constructor
 * @param attr -  gets passed attributes from search or from other food method
 */
-console.log ('Hi from the food model');
-
 app.Food = Backbone.Model.extend({
 	defaults: {
 		foodName: 'Sample Food',
