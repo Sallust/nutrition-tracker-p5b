@@ -13,7 +13,7 @@ var Totals = Backbone.Firebase.Collection.extend({
 
 	initialize: function() {
 		this.listenTo(app.currentTotals, 'change', this.addValue);
-		var totalsTimeout = wikiRequestTimeout = setTimeout(function() {
+		var totalsTimeout = setTimeout(function() {
 			alert("Error getting trends data. Pleaser try again later please! We are sure you're doing great though!");
 	    }, 5000);
 	    this.on('sync', function() {
