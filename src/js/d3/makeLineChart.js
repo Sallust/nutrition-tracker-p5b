@@ -42,7 +42,7 @@ function makeLineChart(array, title, setwidth, setheight, key, IDtag, target) {
 	*/
 	var xLabels = function(d) {
 		return !array[d] ? '' : width < 600 ? array[d].date.slice(-2) : array[d].date.slice(-4); //shorter labels when width smaller
-	}
+	};
 
 	var xAxis = d3.svg.axis()
 		.scale(xRange)

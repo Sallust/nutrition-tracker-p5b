@@ -27,11 +27,11 @@ var FoodList = Backbone.Firebase.Collection.extend({
 
 		//Error Handling
 		var foodTimeout = setTimeout(function() {
-			alert("No food for you! There's been an error syncing your food data. Try again in a bit")
-		},8000)
+			alert("No food for you! There's been an error syncing your food data. Try again in a bit");
+		},8000);
 		this.on('sync', function() {
-			clearTimeout(foodTimeout)
-		})
+			clearTimeout(foodTimeout);
+		});
 	}
 });
 

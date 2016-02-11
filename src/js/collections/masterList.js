@@ -20,12 +20,12 @@ var MasterList = Backbone.Firebase.Collection.extend({
 		});
 	},
 	initialize: function() {
-		var masterTimeout = wikiRequestTimeout = setTimeout(function() {
-			alert('Error getting your favorites. Try again later please!')
+		var masterTimeout = setTimeout(function() {
+			alert('Error getting your favorites. Try again later please!');
 	    }, 5000);
 	    this.on('sync', function() {
-	    	clearTimeout(masterTimeout)
-	    })
+	    	clearTimeout(masterTimeout);
+	    });
 	}
 });
 
